@@ -22,21 +22,21 @@
         <div class="col-md-6 mx-auto">
             <div class="card border-dark">
                 <div class="card-header">
-                    <h4><i class="fa fa-user" aria-hidden="true"></i> Login</h4>
+                    <h4><i class="fa fa-user" aria-hidden="true"></i> su usuario</h4>
                 </div>
                 <div class="card-body">
                     <form (submit)="login()">
                         <div class="form-group">
                           <label for="email">Email</label>
-                          <input type="email" name="email" class="form-control" placeholder="ingrese el email" 
-                          required>
+                            <input type="email" name="email" class="form-control" placeholder="ingrese su email" 
+                            required>
                         </div>
                         <div class="form-group">
                           <label for="password">password</label>
-                          <input type="password" name="password" class="form-control" placeholder="passsword" 
+                          <input type="password" name="password" class="form-control" placeholder="contraseña" 
                           [(ngModel)]="password" required>
                         </div>
-                        <input type="submit" value="login" class="btn btn-primary btn-block">
+                        <input type="submit" value="Entrar" class="btn btn-primary btn-block">
                     </form>
                 </div>
             </div>
