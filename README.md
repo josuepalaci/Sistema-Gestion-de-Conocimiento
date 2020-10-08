@@ -11,3 +11,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## vista previa 
 
 ![inicio](caps/1.png)
+req![login](caps/2.png)
+![direccion](caps/3.png)
+![historicos](caps/4.png)
