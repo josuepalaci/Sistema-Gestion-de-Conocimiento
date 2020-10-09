@@ -5,7 +5,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## usando 
 
 - flash-messages
-- bootswatch
 - firebase
 
 ## vista previa 
