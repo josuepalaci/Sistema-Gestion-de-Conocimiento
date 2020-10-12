@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
-        <h1><i class="fa fa-comments fa-1x" aria-hidden="true"></i> Agregar </h1>
+        <h1><i class="fa fa-plus fa-1x" aria-hidden="true"></i> Agregar </h1>
       </div>
     </div>
   </div>
@@ -13,65 +13,128 @@
 
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <form name="formularioAgregar">
+      
         <div class="form-group">
           <label for="exampleFormControlSelect1">Seleccione Tipo de Conocimiento</label>
           <select class="form-control" id="conoSelect" name="conoSelect" [(ngModel)]="opcion"> 
-            <option value="1">Consejos</option>
-            <option value="2">Preguntas</option>
-            <option value="3">Historicos</option>
+            <option value="1">Consejo</option>
+            <option value="2">Pregunta</option>
+            <option value="3">Historico</option>
           </select>
         </div>
-        <div id="tipos" class="container">
+
+        <div id="tipos" class="container mt-4">
+
+          
+          <div class="d-flex justify-content-center" *ngIf="opcion === 0">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          
 
           <div id="consejos" *ngIf="opcion == 1">
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Consejos</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <div class="card border-dark p-3">
+              <div class="card-header">
+                <h4><i class="fa fa-comments" aria-hidden="true"></i> Consejo</h4>
+              </div>
+              <div class="card-body">
+
+                <form (submit)="addConsejo()">
+                  
+                  <div class="form-group">
+                    <label for="tituloConsejo">Titulo</label>
+                    <input type="text" class="form-control" id="tituloConsejo" name="tituloConsejo">
+                  </div>
+                  <div class="form-group">
+                    <label for="areaConsejo">Area</label>
+                    <input type="text" class="form-control" id="areaConsejo" name="areaConsejo">
+                  </div>
+                  <div class="form-group">
+                    <label for="desConsejo">Descripcion</label>
+                    <input type="text" class="form-control" id="desConsejo" name="desConsejo">
+                  </div>
+                  
+                  <button type="submit" class="btn btn-secondary mt-3">Enviar</button>
+                </form>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+            <br>
+            <br>
+            <br>
+            <br>
           </div>
 
-          <div id="consejos" *ngIf="opcion == 2">
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Preguntas</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <div id="Pregunta" *ngIf="opcion == 2">
+            
+            <div class="card border-dark p-3">
+              <div class="card-header">
+                <h4><i class="fa fa-bug" aria-hidden="true"></i> Pregunta</h4>
+              </div>
+              <div class="card-body">
+
+                <form (submit)="addPregunta()">
+                  
+                  <div class="form-group">
+                    <label for="pregunta">Pregunta</label>
+                    <input type="text" class="form-control" id="pregunta" name="pregunta">
+                  </div>
+                  <div class="form-group">
+                    <label for="areaPregunta">Area</label>
+                    <input type="text" class="form-control" id="areaPregunta" name="areaPregunta">
+                  </div>
+                  <button type="submit" class="btn btn-secondary mt-3">Enviar</button>
+
+                </form>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
           </div>
 
-          <div id="consejos" *ngIf="opcion == 3">
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Historicos</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <div id="Historico" *ngIf="opcion == 3">
+            
+            <div class="card border-dark p-3">
+              <div class="card-header">
+                <h4><i class="fa fa-history" aria-hidden="true"></i> Historico</h4>
+              </div>
+              <div class="card-body">
+
+                <form (submit)="addHistorico()">
+                  
+                  <div class="form-group">
+                    <label for="tituloHistorico">Titulo</label>
+                    <input type="text" class="form-control" id="tituloHistorico" name="tituloHistorico">
+                  </div>
+                  <div class="form-group">
+                    <label for="areaHistorico">Area</label>
+                    <input type="text" class="form-control" id="areaHistorico" name="areaHistorico">
+                  </div>
+                  <div class="form-group">
+                    <label for="desHistorico">Descripcion</label>
+                    <input type="text" class="form-control" id="desHistorico" name="desHistorico">
+                  </div>
+                  <div class="form-group">
+                    <label for="docHistorico">Documento</label>
+                    <input type="file" class="form-control" id="docHistorico" name="docHistorico">
+                  </div>
+                  <button type="submit" class="btn btn-secondary mt-3">Enviar</button>
+
+                </form>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+
           </div>
 
         </div>
-      </form>
-    </div>
+
+      </div>
   </div>
 
 </div>

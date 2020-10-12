@@ -8,11 +8,25 @@ import { FormControl } from '@angular/forms';
 })
 export class AgregarComponent implements OnInit {
 
+  opcion=1;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
- opcion=0;
+  addConsejo(){
+    alert('consejo')
+  }
+
+  addPregunta(){
+    alert('pregunta')
+
+  }
+
+  addHistorico(){
+    alert('historico')
+
+  }
 
 }
