@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Direccion } from "../../models/direccion.model";
+
+import { DireccionService } from "../../services/direccion.service";
 
 @Component({
   selector: 'app-direccion-ejecutiva',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DireccionEjecutivaComponent implements OnInit {
 
-  constructor() { }
+  personal: Direccion[];
+  persona: Direccion = {
+    funcion:'',
+    jefe:'',
+    nombre:'',
+    puesto:'',
+    id: ''
+  };
+
+  constructor(
+    private direccionService: DireccionService
+  ) { }
 
   ngOnInit(): void {
+    this.direccionService.getPersonal().subscribe(
+      employes => {
+        this.personal = employes;
+        console.log(this.personal);
+      }
+    );
   }
 
 }

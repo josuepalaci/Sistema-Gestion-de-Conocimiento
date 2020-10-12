@@ -1,6 +1,7 @@
 export interface Historico{
     area?:string;
+    fecha?:string;
     descripcion?:string;
-    idDoc?:string;
+    id?:string;
     titulo?:string;
 }

@@ -1,7 +1,7 @@
 export interface Pregunta{
     area?:string;
     fecha?:string;
-    idImg?:string;
+    id?:string;
     pregunta?:string;
     respuesta?:string[];
 }

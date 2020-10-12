@@ -1,6 +1,7 @@
 export interface Consejo{
     area?:string;
     descripcion?:string;
-    idDoc?:string;
+    id?:string;
     titulo?:string;
+    fecha?:string;
 }

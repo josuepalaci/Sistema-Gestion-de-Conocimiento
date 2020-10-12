@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Consejo } from "../../models/consejo.model";
+
+import { ConsejosService } from "../../services/consejos.service";
 
 @Component({
   selector: 'app-consejos',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsejosComponent implements OnInit {
 
-  constructor() { }
+  consejos: Consejo [];
+  consejo: Consejo = {
+    area:'',
+    descripcion:'',
+    id:'',
+    titulo:'',
+    fecha:''
+  };
+
+  constructor(
+    private consejoService: ConsejosService
+  ) { }
 
   ngOnInit(): void {
+    this.consejoService.getConsejos().subscribe(
+      consej => {
+        this.consejos = consej;
+        console.log(this.consejos);        
+      }
+    );
   }
 
 }

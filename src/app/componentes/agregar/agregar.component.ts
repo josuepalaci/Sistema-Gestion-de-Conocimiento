@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-agregar',
@@ -11,5 +12,7 @@ export class AgregarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+ opcion=0;
 
 }
