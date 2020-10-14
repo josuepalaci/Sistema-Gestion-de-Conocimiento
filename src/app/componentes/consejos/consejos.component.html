@@ -17,58 +17,32 @@
 
 <div class="container mt-5">
     <div class="row">   
-        <div class="col-md-4 cont ">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action active">
+        <div class="col-md-5 cont ">
+          <h4>Consejos:</h4>
+            <div class="list-group" *ngFor="let conse of consejos">
+                
+              <a (click)="getConsejo(conse.id)" class="list-group-item list-group-item-action"  >
                   <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small>3 days ago</small>
+                    <h5 class="mb-1">{{conse.titulo}}</h5>
+                    <small>{{conse.fecha}}</small>
                   </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small>Donec id elit non mi porta.</small>
-                </a>
-                <!-- <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a> -->
+                  <p class="mb-1">{{conse.area}}</p>
+              </a>
+                
             </div>
         </div>
 
-        <div class="col-md-8  mt-5">
-            <div class="card text-white bg-primary mb-3">
-                <div class="card-header">Header</div>
+        <div class="col-md-7  mt-5">
+            <div class="card text-white bg-primary mb-3" *ngIf="consejo.titulo != '' ">
+                <div class="card-header">{{consejo.area}}</div>
                 <div class="card-body">
-                  <h4 class="card-title">Primary card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h4 class="card-title">{{consejo.titulo}}</h4>
+                  <h6 class="card-subtitle text-muted">{{consejo.fecha}}</h6>
+                  <p class="card-text mt-3">{{consejo.descripcion}}</p>
                 </div>
+            </div>
+            <div class="" *ngIf="consejo.titulo === '' ">
+              <h4>Seleccione un consejo.</h4>
             </div>
         </div>  
     </div>

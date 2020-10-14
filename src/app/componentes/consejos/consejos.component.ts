@@ -16,7 +16,8 @@ export class ConsejosComponent implements OnInit {
     descripcion:'',
     id:'',
     titulo:'',
-    fecha:''
+    fecha:'',
+    idDoc:''
   };
 
   constructor(
@@ -27,9 +28,19 @@ export class ConsejosComponent implements OnInit {
     this.consejoService.getConsejos().subscribe(
       consej => {
         this.consejos = consej;
-        console.log(this.consejos);        
+        // console.log(this.consejos);        
       }
     );
   }
+
+
+  getConsejo(id: string){
+    this.consejoService.getConsejo(id).subscribe(
+      conse => {this.consejo = conse}
+    );
+  }
+
+
+
 
 }

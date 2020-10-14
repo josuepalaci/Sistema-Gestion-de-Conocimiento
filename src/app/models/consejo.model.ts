@@ -4,4 +4,5 @@ export interface Consejo{
     id?:string;
     titulo?:string;
     fecha?:string;
+    idDoc?:string;
 }

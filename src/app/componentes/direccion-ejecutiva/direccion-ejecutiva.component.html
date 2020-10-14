@@ -19,19 +19,23 @@
     <div class="row">
    
         <div class="col-md-4 ">
+          <h4>Empleados:</h4>
             <div class="list-group" *ngFor="let persona of personal">
               <a (click)="getPersona(persona.id)" class="list-group-item list-group-item-action">{{persona.puesto}}</a>
             </div>
         </div>
         
         <div class="col-md-8 mt-5">
-            <div class="card text-white bg-dark mb-3">
+            <div class="card text-white bg-dark mb-3" *ngIf="personaA.nombre != '' ">
                 <div class="card-header"> Cargo: {{personaA.puesto}}</div>
                 <div class="card-body">
                   <h4 class="card-title">Nombre: {{personaA.nombre}}</h4>
                   <h6 class="card-subtitle text-muted"> Jefe: {{personaA.jefe}}</h6>
                   <p class="card-text mt-3">Funcion: {{personaA.funcion}}</p>
                 </div>
+            </div>
+            <div class="" *ngIf="personaA.nombre === '' ">
+              <h4>Seleccione un empleado.</h4>
             </div>
         </div>
     </div>
