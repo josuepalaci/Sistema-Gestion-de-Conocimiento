@@ -16,7 +16,7 @@ export class DireccionService {
   direccion: Observable<Direccion>;
 
   constructor(private db: AngularFirestore) {
-    this.direccionColeccion = db.collection('direccion', ref => ref.orderBy('nombre','asc'));
+    this.direccionColeccion = db.collection('direccion', ref => ref.orderBy('puesto','asc'));
   }
 
   getPersonal(): Observable<Direccion[]>{
@@ -45,6 +45,5 @@ export class DireccionService {
     );
     return this.direccion;
   }
-
 
 }

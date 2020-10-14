@@ -11,7 +11,7 @@ import { DireccionService } from "../../services/direccion.service";
 export class DireccionEjecutivaComponent implements OnInit {
 
   personal: Direccion[];
-  persona: Direccion = {
+  personaA: Direccion = {
     funcion:'',
     jefe:'',
     nombre:'',
@@ -27,9 +27,18 @@ export class DireccionEjecutivaComponent implements OnInit {
     this.direccionService.getPersonal().subscribe(
       employes => {
         this.personal = employes;
-        console.log(this.personal);
+        // console.log(this.personal);
       }
     );
   }
+
+  getPersona(id: string){
+    // console.log(id);
+    this.direccionService.getPersona(id).subscribe(
+      per => { this.personaA = per; }
+    );
+    
+  }
+
 
 }
