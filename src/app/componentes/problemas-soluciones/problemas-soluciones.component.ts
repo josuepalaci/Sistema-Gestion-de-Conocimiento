@@ -11,7 +11,7 @@ import { PreguntasService } from "../../services/preguntas.service";
 export class ProblemasSolucionesComponent implements OnInit {
 
   preguntas: Pregunta [];
-  pregunta: Pregunta = {
+  pregunt: Pregunta = {
     area: '',
     fecha: '',
     id: '',
@@ -27,9 +27,16 @@ export class ProblemasSolucionesComponent implements OnInit {
     this.preguntaServicio.getPreguntas().subscribe(
       preguntas => {
         this.preguntas = preguntas;
-        console.log(this.preguntas);
+        // console.log(this.preguntas);
       }
     );
   }
+
+  getPregunta(id:string){
+    this.preguntaServicio.getPregunta(id).subscribe(
+      pregu => {this.pregunt = pregu}
+    );
+  }
+
 
 }
