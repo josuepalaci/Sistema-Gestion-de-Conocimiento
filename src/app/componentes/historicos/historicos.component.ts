@@ -15,7 +15,8 @@ export class HistoricosComponent implements OnInit {
     fecha:'',
     descripcion:'',
     id:'',
-    titulo:''
+    titulo:'',
+    idDoc: ''
   };
 
   constructor(
@@ -26,9 +27,15 @@ export class HistoricosComponent implements OnInit {
     this.historicoService.getHistoricos().subscribe(
       histo => {
         this.historicos = histo;
-        console.log(this.historicos);
+        // console.log(this.historicos);
       }
     )
+  }
+
+  getHistorico(id: string){
+    this.historicoService.getHistorico(id).subscribe(
+        historico => { this.hisotrico = historico }
+    );
   }
 
 }

@@ -1,8 +1,9 @@
 <style>
-    .cont {
-        height: 500px;
-        overflow: auto;
-    }
+  .cont {
+    height: 500px;
+    overflow: auto;
+  }
+
 </style>
 
 <header id="main-header" class="py-2 bg-danger text-white">
@@ -15,69 +16,62 @@
   </div>
 </header>
 
-<div class="container mt-5">
-    <div class="row">   
-        <div class="col-md-4 cont ">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action active">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small>Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-            </div>
-        </div>
 
-        <div class="col-md-8 mt-5 ">
-            <div class="card text-white bg-primary mb-3">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Primary card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
+
+<div class="container mt-3">
+  <!-- <h4>Filtros</h4> -->
+    <div class="form-group row">
+      <button class="col-sm-2 col-form-label btn btn-outline-secondary">Filtrar</button>
+      <div class="col-sm-10 mt-2">
+        <div class="form-group row">
+
+            <div class="col-sm-4">
+              <input type="text" class="form-control" placeholder="Titulo">
             </div>
-        </div>  
+            <div class="col-sm-4">
+              <input type="text" class="form-control" placeholder="Area">
+            </div>
+            <div class="col-sm-4">
+              <input type="date" class="form-control" placeholder="Fecha">
+            </div>
+          </div>
+
+        </div>
     </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4 cont ">
+      <h4>Historicos:</h4>
+
+      <div class="list-group" *ngFor="let histo of historicos">
+
+        <a (click)="getHistorico(histo.id)" class="list-group-item list-group-item-action active">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{histo.titulo}}</h5>
+            <small>{{histo.fecha}}</small>
+          </div>
+          <p class="mb-1">{{histo.area}}</p>
+          <!-- <small>Donec id elit non mi porta.</small> -->
+        </a>
+
+      </div>
+    </div>
+
+    <div class="col-md-8 mt-5 ">
+      <div class="card text-white bg-primary mb-3" *ngIf="hisotrico.titulo != ''">
+        <div class="card-header">{{hisotrico.area}}</div>
+        <div class="card-body">
+          <h4 class="card-title">{{hisotrico.titulo}}</h4>
+          <p class="card-text">{{hisotrico.descripcion}}</p>
+          <a target="_blank"
+            href="https://firebasestorage.googleapis.com/v0/b/sdgdc-abb3d.appspot.com/o/docHistoricos%2F20201001-1-CLectura-Mapas%20de%20conocimiento.pdf?alt=media&token=9143860f-7b22-4ed7-9288-eeb787b4b9f1">ver</a>
+        </div>
+      </div>
+      <div *ngIf="hisotrico.titulo === ''">
+        <h4>Seleccione un historico.</h4>
+      </div>
+    </div>
+  </div>
 </div>

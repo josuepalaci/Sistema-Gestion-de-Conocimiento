@@ -4,4 +4,5 @@ export interface Historico{
     descripcion?:string;
     id?:string;
     titulo?:string;
+    idDoc?:string;
 }

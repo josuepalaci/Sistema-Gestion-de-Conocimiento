@@ -58,6 +58,7 @@ export class HistoricosService {
         }
       })
     );
+    return this.historico;
   }
 
   updateHistorico(uHistorico: Historico){
