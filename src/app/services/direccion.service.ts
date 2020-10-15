@@ -16,7 +16,7 @@ export class DireccionService {
   direccion: Observable<Direccion>;
 
   constructor(private db: AngularFirestore) {
-    this.direccionColeccion = db.collection('direccion', ref => ref.orderBy('puesto','asc'));
+    this.direccionColeccion = db.collection('direccion', ref => ref.orderBy('id','asc'));
   }
 
   getPersonal(): Observable<Direccion[]>{
