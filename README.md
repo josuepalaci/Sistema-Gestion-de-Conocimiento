@@ -10,6 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## vista previa 
 
 ![inicio](caps/1.png)
-![login](caps/2.png)
+![Agregar](caps/5.png)
 ![direccion](caps/3.png)
 ![historicos](caps/4.png)
+![login](caps/2.png)
