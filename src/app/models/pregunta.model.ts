@@ -3,5 +3,5 @@ export interface Pregunta{
     fecha?:string;
     id?:string;
     pregunta?:string;
-    respuesta?:string[];
+    respuesta?:[];
 }

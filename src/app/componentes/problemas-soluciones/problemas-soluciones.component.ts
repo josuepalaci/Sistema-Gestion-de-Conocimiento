@@ -11,6 +11,9 @@ import { PreguntasService } from "../../services/preguntas.service";
 export class ProblemasSolucionesComponent implements OnInit {
 
   preguntas: Pregunta [];
+  respuesta:never;
+  respuestas = [];
+  
   pregunt: Pregunta = {
     area: '',
     fecha: '',
@@ -38,5 +41,18 @@ export class ProblemasSolucionesComponent implements OnInit {
     );
   }
 
+  addRespuesta(){
+
+        // console.log(this.pregunt.respuesta);
+        
+        // this.respuestas = this.pregunt.respuesta;
+      // this.respuestas.push(this.respuesta);
+        this.pregunt.respuesta.push(this.respuesta);
+
+        // console.log(this.respuestas);
+        // console.log(this.pregunt);
+    
+    this.preguntaServicio.updatePregunta(this.pregunt)
+  }
 
 }

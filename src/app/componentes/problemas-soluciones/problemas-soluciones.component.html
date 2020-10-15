@@ -67,18 +67,22 @@
                   <h4 class="card-title">{{pregunt.pregunta}}</h4>
                   <small>Respuestas:</small>
                   <div class="mt-3" *ngFor="let res of pregunt.respuesta">
-                    <li class="card-text">{{res.valueOf()}}</li>
+                    <li class="card-text">{{res}}</li>
                   </div>
                 </div>
                 <!-- coas es pacio para agregar respuesta   -->
                 <div class="card-footer">
-                  <div class="form-group row">
-                    <!-- <label for="staticEmail" class="col-sm-4 col-form-label">Responder</label> -->
-                    <button class="col-sm-4 col-form-label btn btn-primary btn-block">Responder</button>
-                    <div class="col-sm-8">
-                      <input type="text" class="form-control" id="staticEmail" >
+                  <form (ngSubmit)="addRespuesta()" #respuestaForm="ngForm">
+
+                    <div class="form-group row">
+                      <!-- <label for="staticEmail" class="col-sm-4 col-form-label">Responder</label> -->
+                      <button type="submit" class="col-sm-4 col-form-label btn btn-primary btn-block">Responder</button>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" name="res" [(ngModel)]="respuesta" #respuest="ngModel">
+                      </div>
                     </div>
-                  </div>
+
+                  </form>
                 </div>
             </div>
             <div *ngIf="pregunt.pregunta === ''">

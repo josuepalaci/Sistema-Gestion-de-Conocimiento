@@ -97,7 +97,7 @@ export class AgregarComponent implements OnInit {
       
       const now = Date.now();
       value.fecha = this.pipe.transform(now, 'short');
-
+      value.respuesta = [];
       this.preguntasService.addPregunta(value);
       this.preguntaform.resetForm();
       this.opcion = 0;
