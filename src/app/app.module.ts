@@ -21,12 +21,6 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
-import { PreguntasService } from "./services/preguntas.service";
-import { HistoricosService } from "./services/historicos.service";
-import { DireccionService } from "./services/direccion.service";
-import { ConsejosService } from "./services/consejos.service";
-import { LoginService } from "./services/login.service";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,10 +46,6 @@ import { LoginService } from "./services/login.service";
     FlashMessagesModule.forRoot()
   ],
   providers: [
-    // PreguntasService,
-    // HistoricosService,
-    // DireccionService,
-    // LoginService,
     { provide: SETTINGS, useValue:{}}
   ],
   bootstrap: [AppComponent]

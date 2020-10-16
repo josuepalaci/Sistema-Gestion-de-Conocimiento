@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 import { Consejo } from "../../models/consejo.model";
 
 import { ConsejosService } from "../../services/consejos.service";
@@ -10,6 +11,8 @@ import { ConsejosService } from "../../services/consejos.service";
 })
 export class ConsejosComponent implements OnInit {
 
+  loggedInUser: string;
+
   consejos: Consejo [];
   consejo: Consejo = {
     area:'',
@@ -17,20 +20,25 @@ export class ConsejosComponent implements OnInit {
     id:'',
     titulo:'',
     fecha:'',
-    idDoc:''
+    idDoc:'',
+    email:''
+
   };
 
   constructor(
+    private loginService: LoginService,
     private consejoService: ConsejosService
   ) { }
 
   ngOnInit(): void {
     this.consejoService.getConsejos().subscribe(
       consej => {
-        this.consejos = consej;
-        // console.log(this.consejos);        
+        this.consejos = consej;       
       }
     );
+
+    this.loginService.getAuth().subscribe(
+      auth => {this.loggedInUser = auth.email;});
   }
 
 

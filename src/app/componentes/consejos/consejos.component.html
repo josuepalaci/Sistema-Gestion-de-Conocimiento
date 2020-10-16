@@ -53,6 +53,7 @@
                     <small>{{conse.fecha}}</small>
                   </div>
                   <p class="mb-1">{{conse.area}}</p>
+                  <a class="btn btn-primary btn-sm" *ngIf="conse.email === loggedInUser">Modificar</a>
               </a>
                 
             </div>

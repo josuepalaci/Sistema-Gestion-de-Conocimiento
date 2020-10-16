@@ -57,6 +57,7 @@
             <small>{{histo.fecha}}</small>
           </div>
           <p class="mb-1">{{histo.area}}</p>
+          <a class="btn btn-primary btn-sm" *ngIf="histo.email === loggedInUser">Modificar</a>
           <!-- <small>Donec id elit non mi porta.</small> -->
         </a>
 

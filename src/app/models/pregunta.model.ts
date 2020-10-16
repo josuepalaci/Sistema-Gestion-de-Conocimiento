@@ -4,4 +4,6 @@ export interface Pregunta{
     id?:string;
     pregunta?:string;
     respuesta?:[];
+    email?:string;
+
 }

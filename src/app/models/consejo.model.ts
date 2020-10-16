@@ -5,4 +5,6 @@ export interface Consejo{
     titulo?:string;
     fecha?:string;
     idDoc?:string;
+    email?:string;
+
 }

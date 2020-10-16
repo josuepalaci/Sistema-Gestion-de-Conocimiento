@@ -8,6 +8,7 @@ import { Historico } from 'src/app/models/historico.model';
 import { Pregunta } from 'src/app/models/pregunta.model';
 import { ConsejosService } from 'src/app/services/consejos.service';
 import { HistoricosService } from 'src/app/services/historicos.service';
+import { LoginService } from 'src/app/services/login.service';
 import { PreguntasService } from 'src/app/services/preguntas.service';
 
 @Component({
@@ -18,6 +19,7 @@ import { PreguntasService } from 'src/app/services/preguntas.service';
 export class AgregarComponent implements OnInit {
 
   opcion=0;
+  loggedInUser: string;
   @ViewChild("consejoForm") consejoForm: NgForm;
   @ViewChild("preguntaform") preguntaform: NgForm;
   @ViewChild("historicoForm") historicoForm: NgForm;
@@ -28,7 +30,8 @@ export class AgregarComponent implements OnInit {
     id:'',
     titulo:'',
     fecha:'',
-    idDoc:''
+    idDoc:'',
+    email:''
   };
 
   hisotrico: Historico = {
@@ -37,7 +40,9 @@ export class AgregarComponent implements OnInit {
     descripcion:'',
     id:'',
     titulo:'',
-    idDoc: ''
+    idDoc: '',
+    email:''
+
   };
 
   pregunta: Pregunta = {
@@ -45,7 +50,9 @@ export class AgregarComponent implements OnInit {
     fecha: '',
     id: '',
     pregunta: '',
-    respuesta: []
+    respuesta: [],
+    email:''
+
   };
   pipe = new DatePipe('en-US');
 
@@ -53,10 +60,13 @@ export class AgregarComponent implements OnInit {
     private consejoService: ConsejosService,
     private historicoService: HistoricosService,
     private preguntasService: PreguntasService,
-    private flashMessages: FlashMessagesService
+    private flashMessages: FlashMessagesService,
+    private loginService: LoginService,
   ) { }
 
   ngOnInit(): void {
+    this.loginService.getAuth().subscribe(
+      auth => {this.loggedInUser = auth.email;});
   }
 
   // METODOS PARA AGREGAR CONTENIDO *************************
@@ -75,7 +85,7 @@ export class AgregarComponent implements OnInit {
       value.idDoc = "qwe";
       const now = Date.now();
       value.fecha = this.pipe.transform(now, 'short');
-
+      value.email = this.loggedInUser;
       this.consejoService.addConsejo(value);
       this.consejoForm.resetForm();
       this.opcion = 0;
@@ -98,6 +108,8 @@ export class AgregarComponent implements OnInit {
       const now = Date.now();
       value.fecha = this.pipe.transform(now, 'short');
       value.respuesta = [];
+      value.email = this.loggedInUser;
+
       this.preguntasService.addPregunta(value);
       this.preguntaform.resetForm();
       this.opcion = 0;
@@ -121,6 +133,7 @@ export class AgregarComponent implements OnInit {
       
       const now = Date.now();
       value.fecha = this.pipe.transform(now, 'short');
+      value.email = this.loggedInUser;
 
       this.historicoService.addHistorico(value);
       this.historicoForm.resetForm();

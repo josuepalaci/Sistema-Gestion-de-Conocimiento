@@ -5,4 +5,5 @@ export interface Historico{
     id?:string;
     titulo?:string;
     idDoc?:string;
+    email?:string;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 import { Historico } from "../../models/historico.model";
 import { HistoricosService } from "../../services/historicos.service";
 
@@ -9,6 +10,8 @@ import { HistoricosService } from "../../services/historicos.service";
 })
 export class HistoricosComponent implements OnInit {
 
+  loggedInUser: string;
+
   historicos: Historico[];
   hisotrico: Historico = {
     area:'',
@@ -16,10 +19,13 @@ export class HistoricosComponent implements OnInit {
     descripcion:'',
     id:'',
     titulo:'',
-    idDoc: ''
+    idDoc: '',
+    email:''
+
   };
 
   constructor(
+    private loginService: LoginService,
     private historicoService:HistoricosService
   ) { }
 
@@ -29,7 +35,10 @@ export class HistoricosComponent implements OnInit {
         this.historicos = histo;
         // console.log(this.historicos);
       }
-    )
+    );
+
+    this.loginService.getAuth().subscribe(
+      auth => {this.loggedInUser = auth.email;});
   }
 
   getHistorico(id: string){

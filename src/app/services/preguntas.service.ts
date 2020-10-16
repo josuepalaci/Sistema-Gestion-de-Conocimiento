@@ -66,7 +66,7 @@ export class PreguntasService {
   }
 
   deletePregunta(pregunta: Pregunta){
-    this.preguntaDoc = this.db.doc(`pregunta/${pregunta.id}`);
+    this.preguntaDoc = this.db.doc(`preguntas/${pregunta.id}`);
     this.preguntaDoc.delete();
   }
 
