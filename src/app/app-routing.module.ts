@@ -10,15 +10,17 @@ import { LoginComponent } from './componentes/login/login.component';
 import { ProblemasSolucionesComponent } from './componentes/problemas-soluciones/problemas-soluciones.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 
+import { AuthGuard } from "../../src/app/guard/auth.guard";
+
 const routes: Routes = [
-  {path: '', component: InicioComponent , },
-  {path: 'direccion', component: DireccionEjecutivaComponent , },
-  {path: 'historicos', component: HistoricosComponent , },
-  {path: 'consejos', component: ConsejosComponent , },
-  {path: 'problemas', component: ProblemasSolucionesComponent , },
+  {path: '', component: InicioComponent , canActivate: [AuthGuard]},
+  {path: 'direccion', component: DireccionEjecutivaComponent , canActivate: [AuthGuard]},
+  {path: 'historicos', component: HistoricosComponent , canActivate: [AuthGuard]},
+  {path: 'consejos', component: ConsejosComponent , canActivate: [AuthGuard]},
+  {path: 'problemas', component: ProblemasSolucionesComponent , canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent , },
   {path: 'registro', component: RegistroComponent , },
-  {path: 'agregar', component: AgregarComponent , },
+  {path: 'agregar', component: AgregarComponent , canActivate: [AuthGuard]},
 
   {path: '**', component: ErrorComponent , },
 ];

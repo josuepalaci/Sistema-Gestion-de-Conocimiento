@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Pregunta } from 'src/app/models/pregunta.model';
 
 import { PreguntasService } from "../../services/preguntas.service";
@@ -13,6 +14,7 @@ export class ProblemasSolucionesComponent implements OnInit {
   preguntas: Pregunta [];
   respuesta:never;
   respuestas = [];
+  @ViewChild("respuestaForm") respuestaForm: NgForm;
   
   pregunt: Pregunta = {
     area: '',
@@ -53,6 +55,8 @@ export class ProblemasSolucionesComponent implements OnInit {
         // console.log(this.pregunt);
     
     this.preguntaServicio.updatePregunta(this.pregunt)
+    this.respuestaForm.reset();
+    
   }
 
 }
