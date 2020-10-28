@@ -34,7 +34,7 @@
           </div>
 
       </div>
-      <a class="btn btn-info col-sm-2 col"  
+      <a class="btn btn-outline-info  col-sm-2 col"  
                     routerLink="/agregar"
                     role="button"> <i class="fa fa-plus fa-2x" aria-hidden="true"></i> <br>
                     Agregar Conocimiento</a>
@@ -55,7 +55,7 @@
                   </div>
                   <p class="mb-1">{{pregunta.area}}</p>
                   <!-- <small>Donec id elit non mi porta.</small> -->
-                  <a class="btn btn-primary btn-sm" *ngIf="pregunta.email === loggedInUser">Modificar</a>
+                  <a class="btn btn-primary btn-sm" *ngIf="pregunt.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a>
               </a>
                 
             </div>
@@ -63,8 +63,12 @@
 
         <div class="col-md-8 mt-5 ">
             <div class="card text-white bg-primary mb-3" *ngIf="pregunt.pregunta!=''">
-                <div class="card-header">{{pregunt.area}} 
-                  
+                <div class="card-header d-flex justify-content-between">
+                  {{pregunt.area}} 
+                  <div>
+                    <a><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                    <a><i class="fa fa-search-minus" aria-hidden="true"></i></a>
+                  </div>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">{{pregunt.pregunta}}</h4>

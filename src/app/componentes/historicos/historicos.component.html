@@ -37,7 +37,7 @@
           </div>
 
       </div>
-      <a class="btn btn-info col-sm-2 col"  
+      <a class="btn btn-outline-info  col-sm-2 col"  
                     routerLink="/agregar"
                     role="button"> <i class="fa fa-plus fa-2x" aria-hidden="true"></i> <br>
                     Agregar Conocimiento</a>
@@ -57,7 +57,7 @@
             <small>{{histo.fecha}}</small>
           </div>
           <p class="mb-1">{{histo.area}}</p>
-          <a class="btn btn-primary btn-sm" *ngIf="histo.email === loggedInUser">Modificar</a>
+          <a class="btn btn-primary btn-sm" *ngIf="hisotrico.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a>
           <!-- <small>Donec id elit non mi porta.</small> -->
         </a>
 
@@ -66,7 +66,13 @@
 
     <div class="col-md-8 mt-5 ">
       <div class="card text-white bg-primary mb-3" *ngIf="hisotrico.titulo != ''">
-        <div class="card-header">{{hisotrico.area}}</div>
+        <div class="card-header  d-flex justify-content-between">
+         <p>{{hisotrico.area}}</p> 
+         <div>
+          <a><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+          <a><i class="fa fa-search-minus" aria-hidden="true"></i></a>
+        </div>
+        </div>
         <div class="card-body">
           <h4 class="card-title">{{hisotrico.titulo}}</h4>
           <p class="card-text">{{hisotrico.descripcion}}</p>
