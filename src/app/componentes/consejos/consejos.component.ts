@@ -12,7 +12,8 @@ import { ConsejosService } from "../../services/consejos.service";
 export class ConsejosComponent implements OnInit {
 
   loggedInUser: string;
-
+  fillFecha: string;
+  fillArea: string;
   consejos: Consejo [];
   consejo: Consejo = {
     area:'',
@@ -48,7 +49,8 @@ export class ConsejosComponent implements OnInit {
     );
   }
 
-
-
+  filtroConsejo(fecha: string, area: string){
+    this.consejoService.filConsejo(fecha, area);
+  }
 
 }

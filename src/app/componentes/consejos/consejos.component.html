@@ -18,7 +18,8 @@
 <div class="container mt-3">
   <!-- <h4>Filtros</h4> -->
     <div class="form-group row">
-      <button class="col-sm-2 col-form-label btn btn-outline-secondary">Filtrar</button>
+      <button class="col-sm-2 col-form-label btn btn-outline-secondary"
+      (click)="filtroConsejo(fecha.value, area.value)">Filtrar</button>
       <div class="col-sm-8 mt-2">
         <div class="form-group row">
 
@@ -26,18 +27,23 @@
               <input type="text" class="form-control" placeholder="Titulo">
             </div>
             <div class="col-sm-4">
-              <input type="text" class="form-control" placeholder="Area">
+              <input type="text" class="form-control" placeholder="Area"
+              [(ngModel)]="fillArea" #area="ngModel"
+              >
             </div>
             <div class="col-sm-4">
-              <input type="date" class="form-control" placeholder="Fecha">
+              <input type="date" class="form-control" placeholder="Fecha" 
+              [(ngModel)]="fillFecha" #fecha="ngModel"
+              >
             </div>
           </div>
 
       </div>
       <a class="btn btn-outline-info  col-sm-2 col"  
-                    routerLink="/agregar"
-                    role="button"> <i class="fa fa-plus fa-2x" aria-hidden="true"></i> <br>
-                    Agregar Conocimiento</a>
+        routerLink="/agregar"
+        role="button"> <i class="fa fa-plus fa-2x" aria-hidden="true"></i> <br>
+        Agregar Conocimiento
+      </a>
     </div>
 </div>
 
