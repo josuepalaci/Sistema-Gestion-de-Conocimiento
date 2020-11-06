@@ -34,7 +34,7 @@
           </div>
 
       </div>
-      <a class="btn btn-info col-sm-2 col"  
+      <a class="btn btn-outline-info  col-sm-2 col"  
                     routerLink="/agregar"
                     role="button"> <i class="fa fa-plus fa-2x" aria-hidden="true"></i> <br>
                     Agregar Conocimiento</a>
@@ -53,7 +53,7 @@
                     <small>{{conse.fecha}}</small>
                   </div>
                   <p class="mb-1">{{conse.area}}</p>
-                  <a class="btn btn-primary btn-sm" *ngIf="conse.email === loggedInUser">Modificar</a>
+                  <a class="btn btn-primary btn-sm" *ngIf="conse.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a>
               </a>
                 
             </div>
@@ -61,7 +61,14 @@
 
         <div class="col-md-7  mt-5">
             <div class="card text-white bg-primary mb-3" *ngIf="consejo.titulo != '' ">
-                <div class="card-header">{{consejo.area}}</div>
+                <div class="card-header d-flex justify-content-between">
+                  <p>{{consejo.area}}</p>
+                  <div>
+                    <a><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                    <a><i class="fa fa-search-minus" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+                
                 <div class="card-body">
                   <h4 class="card-title">{{consejo.titulo}}</h4>
                   <h6 class="card-subtitle text-muted">{{consejo.fecha}}</h6>

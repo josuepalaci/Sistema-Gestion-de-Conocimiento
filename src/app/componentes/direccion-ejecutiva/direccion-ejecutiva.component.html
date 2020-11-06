@@ -27,7 +27,13 @@
         
         <div class="col-md-8 mt-5">
             <div class="card text-white bg-dark mb-3" *ngIf="personaA.nombre != '' ">
-                <div class="card-header"> Cargo: {{personaA.puesto}}</div>
+                <div class="card-header  d-flex justify-content-between"> 
+                  <p> Cargo: {{personaA.puesto}}</p>
+                  <div>
+                    <a><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                    <a><i class="fa fa-search-minus" aria-hidden="true"></i></a>
+                  </div>
+                </div>
                 <div class="card-body">
                   <h4 class="card-title">Nombre: {{personaA.nombre}}</h4>
                   <h6 class="card-subtitle text-muted"> Jefe: {{personaA.jefe}}</h6>
