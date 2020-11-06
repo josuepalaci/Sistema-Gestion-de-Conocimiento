@@ -17,7 +17,7 @@ export class PreguntasService {
   constructor(
     private db: AngularFirestore
   ) {
-    this.preguntasColeccion = db.collection('preguntas', ref => ref.orderBy('fecha','asc'));
+    this.preguntasColeccion = db.collection('preguntas', ref => ref.orderBy('fecha','desc'));
    }
 
   //-------- PROCESOS CRUD ----------------------------------

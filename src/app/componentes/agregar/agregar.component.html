@@ -90,9 +90,10 @@
                 <!-- *************************** -->
                 <div class="form-group">
                   <label for="descripcion">Descripcion</label>
-                  <input type="text" name="descripcion" class="form-control" required #descripcion="ngModel"
+                  <textarea type="text" name="descripcion" class="form-control" required #descripcion="ngModel"
                     [(ngModel)]="consejo.descripcion" minlength="10"
-                    [ngClass]="{'is-invalid': descripcion.errors && descripcion.touched}">
+                    [ngClass]="{'is-invalid': descripcion.errors && descripcion.touched}"
+                    rows="7" cols="100" ></textarea>
                   <div [hidden]="!descripcion.errors?.required" class="invalid-feedback">
                     Descripcion requerida
                   </div>
@@ -206,9 +207,10 @@
                 <!-- *************************** -->
                 <div class="form-group">
                   <label for="descripcion">Descripcion</label>
-                  <input type="text" name="descripcion" class="form-control" required #descripcion="ngModel"
+                  <textarea type="text" name="descripcion" class="form-control" required #descripcion="ngModel"
                     [(ngModel)]="hisotrico.descripcion" minlength="10"
-                    [ngClass]="{'is-invalid': descripcion.errors && descripcion.touched}">
+                    [ngClass]="{'is-invalid': descripcion.errors && descripcion.touched}"
+                    rows="7" cols="100" ></textarea>
                   <div [hidden]="!descripcion.errors?.required" class="invalid-feedback">
                     Descripcion requerida
                   </div>

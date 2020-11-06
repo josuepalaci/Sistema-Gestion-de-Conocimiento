@@ -18,7 +18,7 @@ export class HistoricosService {
   constructor(
     private db: AngularFirestore
   ) {
-    this.historicosColeccion = db.collection('historicos', ref => ref.orderBy('fecha','asc'));
+    this.historicosColeccion = db.collection('historicos', ref => ref.orderBy('fecha','desc'));
   }
 
   // ------- PROCESOS CRUD -------------------------------

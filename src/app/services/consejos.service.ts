@@ -15,7 +15,7 @@ export class ConsejosService {
   consejo: Observable<Consejo>;
 
   constructor(private db: AngularFirestore) { 
-    this.consejosColeccion = db.collection('consejos', ref => ref.orderBy('fecha','asc'));
+    this.consejosColeccion = db.collection('consejos', ref => ref.orderBy('fecha','desc'));
   }
 
   // ----------- PROCESOS CRUD -------------------------------
