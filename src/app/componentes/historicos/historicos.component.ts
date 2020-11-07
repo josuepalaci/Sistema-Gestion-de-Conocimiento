@@ -10,6 +10,13 @@ import { HistoricosService } from "../../services/historicos.service";
 })
 export class HistoricosComponent implements OnInit {
 
+  //filtros
+  fillFecha: string;
+  fillArea: string;
+  fillTitulo: String;
+  histoFiltro: Historico [];
+  controlFil: boolean = true;
+
   loggedInUser: string;
 
   historicos: Historico[];
@@ -45,6 +52,47 @@ export class HistoricosComponent implements OnInit {
     this.historicoService.getHistorico(id).subscribe(
         historico => { this.hisotrico = historico }
     );
+  }
+
+  //para lista de filtrado
+  filtroConsejo(fecha: string, area: string, titulo: string){
+    
+    this.histoFiltro = [];
+    // 3 existen
+    if (fecha && area && titulo) {
+      this.historicos.filter((item) => (item.area===area && item.fecha==fecha && item.titulo.toLowerCase().includes(titulo.toLowerCase()) ) ? this.histoFiltro.push(item) : 0 );
+    }
+    // 2 existen
+    if (fecha && area && !titulo) {
+      this.historicos.filter((item) => (item.area===area && item.fecha==fecha ) ? this.histoFiltro.push(item) : 0 );
+    }
+    if (fecha && !area && titulo) {
+      this.historicos.filter((item) => (item.area===area && item.titulo.toLowerCase().includes(titulo.toLowerCase())) ? this.histoFiltro.push(item) : 0 );
+    }
+    if (!fecha && area && titulo) {
+      this.historicos.filter((item) => (item.area===area && item.titulo.toLowerCase().includes(titulo.toLowerCase())) ? this.histoFiltro.push(item) : 0 );
+    }
+    // 1 existe 
+    if (!fecha && !area && titulo) {
+      this.historicos.filter((item) => (item.titulo.toLowerCase().includes(titulo.toLowerCase())) ? this.histoFiltro.push(item) : 0 );
+      console.log("titulo solo");
+    }
+    if (!fecha && area && !titulo) {
+      this.historicos.filter((item) => (item.area===area) ? this.histoFiltro.push(item) : 0 );
+    }
+    if (fecha && !area && !titulo) {
+      this.historicos.filter((item) => (item.fecha==fecha) ? this.histoFiltro.push(item) : 0 );
+    }
+    if(!fecha && !area && !titulo){
+      this.histoFiltro = this.historicos;
+      alert('Filtros Vacios, No se pudo filtrar!');
+    }
+
+    this.controlFiltro(false);
+  }
+  
+  controlFiltro(valor: boolean){
+    this.controlFil = valor;
   }
 
 }
