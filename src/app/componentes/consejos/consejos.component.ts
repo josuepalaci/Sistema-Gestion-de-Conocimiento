@@ -59,21 +59,21 @@ export class ConsejosComponent implements OnInit {
     this.consejoFiltro = [];
     // 3 existen
     if (fecha && area && titulo) {
-      this.consejos.filter((item) => (item.area===area && item.fecha==fecha && item.titulo.includes(titulo) ) ? this.consejoFiltro.push(item) : 0 );
+      this.consejos.filter((item) => (item.area===area && item.fecha==fecha && item.titulo.toLowerCase().includes(titulo.toLowerCase()) ) ? this.consejoFiltro.push(item) : 0 );
     }
     // 2 existen
     if (fecha && area && !titulo) {
       this.consejos.filter((item) => (item.area===area && item.fecha==fecha ) ? this.consejoFiltro.push(item) : 0 );
     }
     if (fecha && !area && titulo) {
-      this.consejos.filter((item) => (item.area===area && item.titulo.includes(titulo)) ? this.consejoFiltro.push(item) : 0 );
+      this.consejos.filter((item) => (item.area===area && item.titulo.toLowerCase().includes(titulo.toLowerCase())) ? this.consejoFiltro.push(item) : 0 );
     }
     if (!fecha && area && titulo) {
-      this.consejos.filter((item) => (item.area===area && item.titulo.includes(titulo)) ? this.consejoFiltro.push(item) : 0 );
+      this.consejos.filter((item) => (item.area===area && item.titulo.toLowerCase().includes(titulo.toLowerCase())) ? this.consejoFiltro.push(item) : 0 );
     }
     // 1 existe 
     if (!fecha && !area && titulo) {
-      this.consejos.filter((item) => (item.titulo.includes(titulo)) ? this.consejoFiltro.push(item) : 0 );
+      this.consejos.filter((item) => (item.titulo.toLowerCase().includes(titulo.toLowerCase())) ? this.consejoFiltro.push(item) : 0 );
       console.log("titulo solo");
     }
     if (!fecha && area && !titulo) {
@@ -84,7 +84,7 @@ export class ConsejosComponent implements OnInit {
     }
     if(!fecha && !area && !titulo){
       this.consejoFiltro = this.consejos;
-      console.log("todos");
+      alert('Filtros Vacios, No se pudo filtrar!');
     }
 
     this.controlFiltro(false);

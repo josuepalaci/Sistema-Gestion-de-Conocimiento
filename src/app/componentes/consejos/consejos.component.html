@@ -49,7 +49,7 @@
     <!-- REGRESAR A VER TODOS  -->
     <div class="form-group row" *ngIf="controlFil === false">
       <button class="col-sm-2 col-form-label btn btn-outline-secondary"
-       (click)="controlFiltro(true)" >Ver Todos</button>
+       (click)="controlFiltro(true)" >Ver Filtros</button>
     </div>
 </div>
 
@@ -58,7 +58,7 @@
         <div class="col-md-5 cont ">
           <!-- lista completa -->
           <div *ngIf="controlFil === true">
-            <h4>Listado Completo de Consejos:</h4>
+            <h4>Listado de Consejos:</h4>
               <div class="list-group" *ngFor="let conse of consejos">
                   
                 <a (click)="getConsejo(conse.id)" class="list-group-item list-group-item-action"  >
@@ -75,7 +75,7 @@
           
           <!-- lista de filtrado -->
           <div *ngIf="controlFil === false">
-            <h4>Listado Filtrado de Consejos:</h4>
+            <h4>Listado de Consejos:</h4>
               <div class="list-group" *ngFor="let conse of consejoFiltro">
                   
                 <a (click)="getConsejo(conse.id)" class="list-group-item list-group-item-action"  >

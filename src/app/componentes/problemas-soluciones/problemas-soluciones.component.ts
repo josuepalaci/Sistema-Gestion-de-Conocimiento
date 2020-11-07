@@ -14,6 +14,13 @@ import { PreguntasService } from "../../services/preguntas.service";
 })
 export class ProblemasSolucionesComponent implements OnInit {
 
+  //filtros
+  fillFecha: string;
+  fillArea: string;
+  fillTitulo: String;
+  preguntaFiltro: Pregunta [];
+  controlFil: boolean = true;
+
   preguntas: Pregunta [];
   respuesta:never;
   respuestas = [];
@@ -66,6 +73,48 @@ export class ProblemasSolucionesComponent implements OnInit {
     this.pregunt.respuesta= [];
     this.pregunt.email='';
     this.router.navigate(['problemas']);
+  }
+
+//para lista de filtrado
+filtroConsejo(fecha: string, area: string, titulo: string){
+    
+  this.preguntaFiltro = [];
+  // 3 existen
+  if (fecha && area && titulo) {
+    this.preguntas.filter((item) => (item.area===area && item.fecha==fecha && item.pregunta.toLowerCase().includes(titulo.toLowerCase()) ) ? this.preguntaFiltro.push(item) : 0 );
+  }
+  // 2 existen
+  if (fecha && area && !titulo) {
+    this.preguntas.filter((item) => (item.area===area && item.fecha==fecha ) ? this.preguntaFiltro.push(item) : 0 );
+  }
+  if (fecha && !area && titulo) {
+    this.preguntas.filter((item) => (item.area===area && item.pregunta.toLowerCase().includes(titulo.toLowerCase())) ? this.preguntaFiltro.push(item) : 0 );
+  }
+  if (!fecha && area && titulo) {
+    this.preguntas.filter((item) => (item.area===area && item.pregunta.toLowerCase().includes(titulo.toLowerCase())) ? this.preguntaFiltro.push(item) : 0 );
+  }
+  // 1 existe 
+  if (!fecha && !area && titulo) {
+    this.preguntas.filter((item) => (item.pregunta.toLowerCase().includes(titulo.toLowerCase())) ? this.preguntaFiltro.push(item) : 0 );
+    console.log("titulo solo");
+  }
+  if (!fecha && area && !titulo) {
+    this.preguntas.filter((item) => (item.area===area) ? this.preguntaFiltro.push(item) : 0 );
+  }
+  if (fecha && !area && !titulo) {
+    this.preguntas.filter((item) => (item.fecha==fecha) ? this.preguntaFiltro.push(item) : 0 );
+  }
+  if(!fecha && !area && !titulo){
+    this.preguntaFiltro = this.preguntas;
+    alert('Filtros Vacios, No se pudo filtrar!');
+  }
+
+  this.controlFiltro(false);
+}
+
+
+  controlFiltro(valor: boolean){
+    this.controlFil = valor;
   }
 
 }
