@@ -16,28 +16,29 @@
 </header>
 
 <div class="container mt-3">
-  <!-- <h4>Filtros</h4> -->
-    <div class="form-group row">
+  <!-- FILTROS -->
+    <div class="form-group row" *ngIf="controlFil === true">
       <button class="col-sm-2 col-form-label btn btn-outline-secondary"
-      (click)="filtroConsejo(fecha.value, area.value)">Filtrar</button>
+      (click)="filtroConsejo(fecha.value, area.value, titulo.value)">Filtrar</button>
       <div class="col-sm-8 mt-2">
         <div class="form-group row">
-
             <div class="col-sm-4">
-              <input type="text" class="form-control" placeholder="Titulo">
+              <small id="emailHelp" class="form-text text-muted">Titulo</small>
+              <input type="text" class="form-control" placeholder="Titulo" [(ngModel)]="filTitulo" #titulo="ngModel">
             </div>
             <div class="col-sm-4">
-              <input type="text" class="form-control" placeholder="Area"
-              [(ngModel)]="fillArea" #area="ngModel"
-              >
+              <small id="emailHelp" class="form-text text-muted">Area</small>
+              <select name="area" class="form-control" [(ngModel)]="fillArea" #area="ngModel">
+                <option value="Desarrollo">Desarrollo</option>
+                <option value="ERP">ERP</option>
+                <option value="BI">BI</option>
+              </select>
             </div>
             <div class="col-sm-4">
-              <input type="date" class="form-control" placeholder="Fecha" 
-              [(ngModel)]="fillFecha" #fecha="ngModel"
-              >
+              <small id="emailHelp" class="form-text text-muted">Fecha</small>
+              <input name="fecha" type="date" class="form-control" [(ngModel)]="fillFecha" #fecha="ngModel">
             </div>
           </div>
-
       </div>
       <a class="btn btn-outline-info  col-sm-2 col"  
         routerLink="/agregar"
@@ -45,15 +46,39 @@
         Agregar Conocimiento
       </a>
     </div>
+    <!-- REGRESAR A VER TODOS  -->
+    <div class="form-group row" *ngIf="controlFil === false">
+      <button class="col-sm-2 col-form-label btn btn-outline-secondary"
+       (click)="controlFiltro(true)" >Ver Todos</button>
+    </div>
 </div>
 
 <div class="container mt-5">
     <div class="row">   
         <div class="col-md-5 cont ">
-          <h4>Consejos:</h4>
-            <div class="list-group" *ngFor="let conse of consejos">
-                
-              <a (click)="getConsejo(conse.id)" class="list-group-item list-group-item-action"  >
+          <!-- lista completa -->
+          <div *ngIf="controlFil === true">
+            <h4>Listado Completo de Consejos:</h4>
+              <div class="list-group" *ngFor="let conse of consejos">
+                  
+                <a (click)="getConsejo(conse.id)" class="list-group-item list-group-item-action"  >
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1 mr-2">{{conse.titulo}}</h5>
+                      <small>{{conse.fecha}}</small>
+                    </div>
+                    <p class="mb-1">{{conse.area}}</p>
+                    <a class="btn btn-primary btn-sm" *ngIf="conse.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a>
+                </a>
+                  
+              </div>
+          </div>
+          
+          <!-- lista de filtrado -->
+          <div *ngIf="controlFil === false">
+            <h4>Listado Filtrado de Consejos:</h4>
+              <div class="list-group" *ngFor="let conse of consejoFiltro">
+                  
+                <a (click)="getConsejo(conse.id)" class="list-group-item list-group-item-action"  >
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1 mr-2">{{conse.titulo}}</h5>
                     <small>{{conse.fecha}}</small>
@@ -61,8 +86,10 @@
                   <p class="mb-1">{{conse.area}}</p>
                   <a class="btn btn-primary btn-sm" *ngIf="conse.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a>
               </a>
-                
-            </div>
+                  
+              </div>
+          </div>
+          
         </div>
 
         <div class="col-md-7  mt-5">

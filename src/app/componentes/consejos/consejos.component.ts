@@ -11,9 +11,14 @@ import { ConsejosService } from "../../services/consejos.service";
 })
 export class ConsejosComponent implements OnInit {
 
-  loggedInUser: string;
+  //filtros
   fillFecha: string;
   fillArea: string;
+  fillTitulo: String;
+  consejoFiltro: Consejo [];
+  controlFil: boolean = true;
+
+  loggedInUser: string;
   consejos: Consejo [];
   consejo: Consejo = {
     area:'',
@@ -23,7 +28,6 @@ export class ConsejosComponent implements OnInit {
     fecha:'',
     idDoc:'',
     email:''
-
   };
 
   constructor(
@@ -42,15 +46,52 @@ export class ConsejosComponent implements OnInit {
       auth => {this.loggedInUser = auth.email;});
   }
 
-
+  // para optener uno 
   getConsejo(id: string){
     this.consejoService.getConsejo(id).subscribe(
       conse => {this.consejo = conse}
     );
   }
 
-  filtroConsejo(fecha: string, area: string){
-    this.consejoService.filConsejo(fecha, area);
+  //para lista de filtrado
+  filtroConsejo(fecha: string, area: string, titulo: string){
+    
+    this.consejoFiltro = [];
+    // 3 existen
+    if (fecha && area && titulo) {
+      this.consejos.filter((item) => (item.area===area && item.fecha==fecha && item.titulo.includes(titulo) ) ? this.consejoFiltro.push(item) : 0 );
+    }
+    // 2 existen
+    if (fecha && area && !titulo) {
+      this.consejos.filter((item) => (item.area===area && item.fecha==fecha ) ? this.consejoFiltro.push(item) : 0 );
+    }
+    if (fecha && !area && titulo) {
+      this.consejos.filter((item) => (item.area===area && item.titulo.includes(titulo)) ? this.consejoFiltro.push(item) : 0 );
+    }
+    if (!fecha && area && titulo) {
+      this.consejos.filter((item) => (item.area===area && item.titulo.includes(titulo)) ? this.consejoFiltro.push(item) : 0 );
+    }
+    // 1 existe 
+    if (!fecha && !area && titulo) {
+      this.consejos.filter((item) => (item.titulo.includes(titulo)) ? this.consejoFiltro.push(item) : 0 );
+      console.log("titulo solo");
+    }
+    if (!fecha && area && !titulo) {
+      this.consejos.filter((item) => (item.area===area) ? this.consejoFiltro.push(item) : 0 );
+    }
+    if (fecha && !area && !titulo) {
+      this.consejos.filter((item) => (item.fecha==fecha) ? this.consejoFiltro.push(item) : 0 );
+    }
+    if(!fecha && !area && !titulo){
+      this.consejoFiltro = this.consejos;
+      console.log("todos");
+    }
+
+    this.controlFiltro(false);
+  }
+  
+  controlFiltro(valor: boolean){
+    this.controlFil = valor;
   }
 
 }

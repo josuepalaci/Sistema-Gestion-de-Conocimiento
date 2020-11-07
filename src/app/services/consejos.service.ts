@@ -54,12 +54,6 @@ export class ConsejosService {
     return this.consejo;
   }
 
-  filConsejo(fecha: string, area: string){
-    console.log(fecha);
-    console.log(area);
-    
-  }
-
   updateConsejo(consejo: Consejo){
     this.consejoDoc = this.db.doc(`consejos/${consejo.id}`);
     this.consejoDoc.update(consejo);

@@ -84,7 +84,7 @@ export class AgregarComponent implements OnInit {
       });
       value.idDoc = "qwe";
       const now = Date.now();
-      value.fecha = this.pipe.transform(now, 'short');
+      value.fecha = this.pipe.transform(now, 'yyyy-M-dd');
       value.email = this.loggedInUser;
       this.consejoService.addConsejo(value);
       this.consejoForm.resetForm();
@@ -106,7 +106,7 @@ export class AgregarComponent implements OnInit {
       });
       
       const now = Date.now();
-      value.fecha = this.pipe.transform(now, 'short');
+      value.fecha = this.pipe.transform(now, 'yyyy-M-dd');
       value.respuesta = [];
       value.email = this.loggedInUser;
 
@@ -132,7 +132,7 @@ export class AgregarComponent implements OnInit {
       // value.idDoc = "qwe";
       
       const now = Date.now();
-      value.fecha = this.pipe.transform(now, 'short');
+      value.fecha = this.pipe.transform(now, 'yyyy-M-dd');
       value.email = this.loggedInUser;
 
       this.historicoService.addHistorico(value);
