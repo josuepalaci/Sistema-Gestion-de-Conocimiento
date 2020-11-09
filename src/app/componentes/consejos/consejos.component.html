@@ -18,7 +18,7 @@
 <div class="container mt-3">
   <!-- FILTROS -->
     <div class="form-group row" *ngIf="controlFil === true">
-      <button class="col-sm-2 col-form-label btn btn-outline-secondary"
+      <button class="col-sm-2 col-form-label btn btn-secondary"
       (click)="filtroConsejo(fecha.value, area.value, titulo.value)">Filtrar</button>
       <div class="col-sm-8 mt-2">
         <div class="form-group row">
@@ -48,7 +48,7 @@
     </div>
     <!-- REGRESAR A VER TODOS  -->
     <div class="form-group row" *ngIf="controlFil === false">
-      <button class="col-sm-2 col-form-label btn btn-outline-secondary"
+      <button class="col-sm-2 col-form-label btn btn-outline-primary"
        (click)="controlFiltro(true)" >Ver Filtros</button>
     </div>
 </div>
@@ -67,7 +67,7 @@
                       <small>{{conse.fecha}}</small>
                     </div>
                     <p class="mb-1">{{conse.area}}</p>
-                    <a class="btn btn-primary btn-sm" *ngIf="conse.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a>
+                    <!-- <a class="btn btn-secondary btn-sm" *ngIf="conse.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a> -->
                 </a>
                   
               </div>

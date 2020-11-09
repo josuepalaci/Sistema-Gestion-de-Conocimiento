@@ -42,7 +42,7 @@
 
     <!-- FILTROS -->
     <div class="form-group row" *ngIf="controlFil === true">
-      <button class="col-sm-2 col-form-label btn btn-outline-secondary"
+      <button class="col-sm-2 col-form-label btn btn-secondary"
       (click)="filtroConsejo(fecha.value, area.value, titulo.value)">Filtrar</button>
       <div class="col-sm-8 mt-2">
         <div class="form-group row">
@@ -72,7 +72,7 @@
     </div>
     <!-- REGRESAR A VER TODOS  -->
     <div class="form-group row" *ngIf="controlFil === false">
-      <button class="col-sm-2 col-form-label btn btn-outline-secondary"
+      <button class="col-sm-2 col-form-label btn btn-outline-primary"
        (click)="controlFiltro(true)" >Ver Filtros</button>
     </div>
 
@@ -108,7 +108,7 @@
                       </div>
                       <p class="mb-1">{{pregunta.area}}</p>
                       <!-- <small>Donec id elit non mi porta.</small> -->
-                      <a class="btn btn-primary btn-sm" *ngIf="pregunt.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a>
+                      <!-- <a class="btn btn-primary btn-sm" *ngIf="pregunt.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a> -->
                   </a>
                 </div>
               </div>

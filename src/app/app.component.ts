@@ -11,10 +11,9 @@ export class AppComponent {
   
   public whiteThem: string = `../assets/white.css`;
   public darkThem: string = `../assets/dark.css`;
-  
-  cssUrl: string = this.whiteThem ;
+  cssUrl: string ;
   constructor(public sanitizer: DomSanitizer) {
-
+    this.cssUrl = this.whiteThem ;
   }
 
   cambio(cambio: Boolean){

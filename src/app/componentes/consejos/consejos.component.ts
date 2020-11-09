@@ -92,6 +92,15 @@ export class ConsejosComponent implements OnInit {
   
   controlFiltro(valor: boolean){
     this.controlFil = valor;
+    this.consejo = {
+      area:'',
+      descripcion:'',
+      id:'',
+      titulo:'',
+      fecha:'',
+      idDoc:'',
+      email:''
+    };
   }
 
 }

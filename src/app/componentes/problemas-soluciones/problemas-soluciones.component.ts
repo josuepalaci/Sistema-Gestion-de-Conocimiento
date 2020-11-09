@@ -115,6 +115,14 @@ filtroConsejo(fecha: string, area: string, titulo: string){
 
   controlFiltro(valor: boolean){
     this.controlFil = valor;
+    this.pregunt = {
+      area: '',
+      fecha: '',
+      id: '',
+      pregunta: '',
+      respuesta: [],
+      email:''
+    };
   }
 
 }

@@ -93,6 +93,16 @@ export class HistoricosComponent implements OnInit {
   
   controlFiltro(valor: boolean){
     this.controlFil = valor;
+    this.hisotrico = {
+      area:'',
+      fecha:'',
+      descripcion:'',
+      id:'',
+      titulo:'',
+      idDoc: '',
+      email:''
+  
+    };
   }
 
 }
