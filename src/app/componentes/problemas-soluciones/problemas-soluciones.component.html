@@ -86,7 +86,7 @@
               <div *ngIf="controlFil === true">
                 <h4>Listado de Preguntas:</h4>
                 <div class="list-group" *ngFor="let pregunta of preguntas">
-                  <a class="list-group-item list-group-item-action active" (click)="getPregunta(pregunta.id)">
+                  <a class="list-group-item list-group-item-action" (click)="getPregunta(pregunta.id)">
                       <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1 mr-2">{{pregunta.pregunta}}</h5>
                         <small>{{pregunta.fecha}}</small>

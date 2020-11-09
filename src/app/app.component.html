@@ -1,4 +1,8 @@
-<app-cabecero></app-cabecero>
+<!-- estilos bootstrapwacht  -->
+<link rel="stylesheet" [href]="sanitizer.bypassSecurityTrustResourceUrl(cssUrl)">
+
+
+<app-cabecero (changeColor)="cambio($event)"></app-cabecero>
 
 <router-outlet></router-outlet>
 

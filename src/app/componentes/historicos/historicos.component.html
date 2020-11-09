@@ -63,7 +63,7 @@
       <div *ngIf="controlFil === true">
         <h4>Listado de Historicos:</h4>
             <div class="list-group" *ngFor="let histo of historicos">
-              <a (click)="getHistorico(histo.id)" class="list-group-item list-group-item-action active">
+              <a (click)="getHistorico(histo.id)" class="list-group-item list-group-item-action ">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1 mr-2">{{histo.titulo}}</h5>
                   <small>{{histo.fecha}}</small>

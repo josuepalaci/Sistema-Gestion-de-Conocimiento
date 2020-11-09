@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
 import { LoginService } from 'src/app/services/login.service';
-import { UserService } from 'src/app/services/user.service';
+// import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-cabecero',
@@ -10,6 +10,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./cabecero.component.css']
 })
 export class CabeceroComponent implements OnInit {
+
+  //cambiar el color
+  @Output() changeColor = new EventEmitter<boolean>();
 
   isloggedIn: boolean;
   loggedInUser: string;
@@ -42,5 +45,18 @@ export class CabeceroComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  control: boolean=true;
+  cambioColor(){
+    if (this.control) {
+      // console.log(this.control);
+      this.changeColor.emit(this.control);
+      this.control = false;
+    } else {
+      // console.log(this.control);
+      this.changeColor.emit(this.control);
+      this.control = true;
+    }
+    
+  }
 
 }

@@ -20,10 +20,13 @@
         <a class="nav-link dropdown-toggle" data-toggle="dropdown">
           <i class="fa fa-user"> </i> Bienvenido: {{loggedInUser}}
         </a>
-        <div class="dropdown-menu" *ngIf="isAdmin===loggedInUser">
-          <a routerLink="/configuracion" class="dropdown-item"><i class="fa fa-cog"></i> Configuracion</a>
+        <div class="dropdown-menu" >
+          <a *ngIf="isAdmin===loggedInUser" routerLink="/configuracion" class="dropdown-item"><i class="fa fa-cog"></i> Configuracion</a>
+          <!-- <a (click)="cambioColor()" class="dropdown-item"><i class="fa fa-spinner"></i> Cambiar Diseño</a> -->
+          <button type="button" (click)="cambioColor()" class="dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off"><i class="fa fa-spinner"></i>
+            Cambiar Diseño
+          </button>
         </div>
-
       </li>
 
       <li *ngIf="isloggedIn" class="nav-item">
