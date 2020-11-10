@@ -13,12 +13,12 @@ export class AppComponent {
   public darkThem: string = `../assets/dark.css`;
   cssUrl: string ;
   constructor(public sanitizer: DomSanitizer) {
-    this.cssUrl = this.whiteThem ;
+    this.cssUrl = (localStorage.getItem('estilo')) ? localStorage.getItem('estilo'): this.whiteThem ;
   }
 
   cambio(cambio: Boolean){
     this.cssUrl = (this.cssUrl === `../assets/dark.css`) ? `../assets/white.css` : `../assets/dark.css`;
+    localStorage.setItem('estilo',this.cssUrl);
   }
-
 
 }
