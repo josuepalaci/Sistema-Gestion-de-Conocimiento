@@ -2,14 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
 
-## usando 
+### usando 
 
 - flash-messages
 - firebase
 
-## vista previa 
+### vista previa 
 
-![inicio](caps/1.png)
+[Manual de Usuario](caps/Manual-de-Usuario.pdf)
+
 ![Agregar](caps/5.png)
 ![direccion](caps/3.png)
 ![historicos](caps/4.png)

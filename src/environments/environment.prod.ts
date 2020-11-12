@@ -1,3 +1,6 @@
+
+// Estas credenciales de proyecto seran eliminadas, asi que no funcionaran en el futuro. 
+
 export const environment = {
   production: true,
   firestore: {
