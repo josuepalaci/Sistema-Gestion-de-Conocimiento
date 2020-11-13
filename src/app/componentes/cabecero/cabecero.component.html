@@ -9,30 +9,35 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarColor02">
 
     <ul *ngIf="isloggedIn" class="navbar-nav">
-      <li class="nav-item px-2">
-        <a routerLink="/" class="nav-link">Inicio</a>
+      <li class="nav-item dropdown px-2">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Inicio</a>
+        <div class="dropdown-menu" >
+          <a routerLink="/direccion" class="dropdown-item"><i class="fa fa-sitemap"></i> Direccion Ejecutiva</a>
+          <a routerLink="/problemas" class="dropdown-item"><i class="fa fa-bug"></i> Problemas y Soluciones</a>
+          <a routerLink="/historicos" class="dropdown-item"><i class="fa fa-history"></i> Historicos</a>
+          <a routerLink="/consejos" class="dropdown-item"><i class="fa fa-comments"></i> Consejos</a>
+        </div>
       </li>
     </ul>
 
-    <ul class="navbar-nav ">
-
+    <ul class="navbar-nav">
       <li *ngIf="isloggedIn" class="nav-item dropdown mr-3">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown">
           <i class="fa fa-user"> </i> Bienvenido: {{loggedInUser}}
         </a>
         <div class="dropdown-menu" >
-          <a *ngIf="isAdmin===loggedInUser" routerLink="/configuracion" class="dropdown-item"><i class="fa fa-cog"></i> Configuracion</a>
+          <!-- <a *ngIf="isAdmin===loggedInUser" routerLink="/registro" class="dropdown-item"><i class="fa fa-cog"></i> Registrar Usuario</a> -->
           <!-- <a (click)="cambioColor()" class="dropdown-item"><i class="fa fa-spinner"></i> Cambiar Diseño</a> -->
           <button type="button" (click)="cambioColor()" class="dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off"><i class="fa fa-spinner"></i>
             Invertir Color
           </button>
+          <div class="dropdown-divider"></div>
+          
+            <a *ngIf="isloggedIn" routerLink="/login" (click)="logOut()" class="dropdown-item" style="cursor: pointer;">
+              <i class="fa fa-user-times"> Salir</i>
+            </a>
+          
         </div>
-      </li>
-
-      <li *ngIf="isloggedIn" class="nav-item">
-        <a routerLink="/login" (click)="logOut()" class="nav-link" style="cursor: pointer;">
-          <i class="fa fa-user-times"> Logout</i>
-        </a>
       </li>
     </ul>
   </div>

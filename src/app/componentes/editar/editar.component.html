@@ -1,0 +1,231 @@
+<header id="main-header" class="py-2 bg-info text-white">
+    <div class="container">
+        <div class="row">
+        <div class="col-md-12 text-center">
+            <h1><i class="fa fa-edit fa-1x" aria-hidden="true"></i>Editar {{area}}</h1>
+        </div>
+        </div>
+    </div>
+</header>
+
+<div class="container mt-4 ">
+    <flash-messages></flash-messages>
+    <!-- INICIO FORM CONSEJO  -->
+    <div id="consejos" *ngIf="area == 'consejo'">
+        <form (ngSubmit)="GConsejo(consejoForm)" #consejoForm="ngForm">
+            <main>
+                <div class="container d-flex justify-content-between mt-3">
+                    <div class="row ">
+                        <div class="col-4">
+                            <a class="btn btn-primary btn-lg" (click)="atras()">
+                                <i class="fa fa-arrow-circle-left"></i>  Ir Atras
+                            </a>
+                        </div>
+                        <div class="col-4">
+                            <a class="btn btn-danger btn-lg" (click)="eliminar()">
+                                <i class="fa fa-trash-o"></i> Eliminar
+                            </a>
+                        </div>           
+                        <div class="col-4">
+                            <button class="btn btn-success btn-lg" type="submit">
+                                <i class="fa fa-check-circle"></i> Guardar
+                            </button>
+                        </div>           
+                    </div>
+                </div>
+            </main>
+            <div class="card border-dark p-3 mt-2">
+                <div class="card-header">
+                    <h4><i class="fa fa-comments" aria-hidden="true"></i> Consejo</h4>
+                    <small>id: {{id}}</small>
+                </div>
+                <div class="card-body">
+                    <!-- ************************* -->
+                        <div class="form-group">
+                            <label for="Titulo">Titulo</label>
+                            <input type="text" name="titulo" class="form-control" required #titulo="ngModel"
+                            [(ngModel)]="consejo.titulo" minlength="10"
+                            [ngClass]="{'is-invalid': titulo.errors && titulo.touched}">
+                            <div [hidden]="!titulo.errors?.required" class="invalid-feedback">
+                                Titulo requerido
+                            </div>
+                            <div [hidden]="!titulo.errors?.minlength" class="invalid-feedback">
+                                Debe contener almenos 10 caracteres
+                            </div>
+                        </div>
+                    <!-- *************************** -->
+                        <div class="form-group">
+                            <label for="area">Area</label>
+                            <select name="area" class="form-control" required #area="ngModel"
+                                [(ngModel)]="consejo.area" [ngClass]="{'is-invalid': area.errors && area.touched}" >
+                                <option value="Desarrollo">Desarrollo</option>
+                                <option value="ERP">ERP</option>
+                                <option value="BI">BI</option>
+                            </select>
+                            <div [hidden]="!area.errors?.required" class="invalid-feedback">
+                                Area requerida
+                            </div>
+                        </div>
+                    <!-- *************************** -->
+                        <div class="form-group">
+                            <label for="descripcion">Descripcion</label>
+                            <textarea type="text" name="descripcion" class="form-control" required #descripcion="ngModel"
+                                [(ngModel)]="consejo.descripcion" minlength="10"
+                                [ngClass]="{'is-invalid': descripcion.errors && descripcion.touched}"
+                                rows="7" cols="100" ></textarea>
+                            <div [hidden]="!descripcion.errors?.required" class="invalid-feedback">
+                                Descripcion requerida
+                            </div>
+                            <div [hidden]="!descripcion.errors?.minlength" class="invalid-feedback">
+                                Debe contener almenos 10 caracteres
+                            </div>
+                        </div>  
+                        <button type="submit" class="btn btn-success  mt-3"><i class="fa fa-check-circle"></i> Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- FIN CONSEJO - INICIO PREGUNTA  -->
+    <div id="Pregunta" *ngIf="area == 'problema'">
+        <form (ngSubmit)="GPregunta(preguntaform)" #preguntaform="ngForm">
+            <main>
+                <div class="container d-flex justify-content-between mt-3">
+                    <div class="row ">
+                        <div class="col-4">
+                            <a class="btn btn-primary btn-lg" (click)="atras()">
+                                <i class="fa fa-arrow-circle-left"></i>  Ir Atras
+                            </a>
+                        </div>
+                        <div class="col-4">
+                            <a class="btn btn-danger btn-lg" (click)="eliminar()">
+                                <i class="fa fa-trash-o"></i> Eliminar
+                            </a>
+                        </div>           
+                        <div class="col-4">
+                            <button class="btn btn-success btn-lg" type="submit">
+                                <i class="fa fa-check-circle"></i> Guardar
+                            </button>
+                        </div>           
+                    </div>
+                </div>
+            </main>
+            <div class="card border-dark p-3">
+                <div class="card-header">
+                    <h4><i class="fa fa-bug" aria-hidden="true"></i> Pregunta</h4>
+                    <small>id: {{id}}</small>
+                </div>
+                <div class="card-body">
+                    <!-- *************************** -->
+                        <div class="form-group">
+                            <label for="pregunta">Pregunta</label>
+                            <input type="text" name="pregunta" class="form-control" required #pregunt="ngModel"
+                                [(ngModel)]="pregunta.pregunta" minlength="10"
+                                [ngClass]="{'is-invalid': pregunt.errors && pregunt.touched}">
+                            <div [hidden]="!pregunt.errors?.required" class="invalid-feedback">
+                                pregunta requerida
+                            </div>
+                            <div [hidden]="!pregunt.errors?.minlength" class="invalid-feedback">
+                                Debe contener almenos 10 caracteres
+                            </div>
+                        </div>
+                    <!-- *************************** -->
+                        <div class="form-group">
+                            <label for="area">Area</label>
+                            <select name="area" class="form-control" required #area="ngModel"
+                                [(ngModel)]="pregunta.area" [ngClass]="{'is-invalid': area.errors && area.touched}" >
+                                <option value="Desarrollo">Desarrollo</option>
+                                <option value="ERP">ERP</option>
+                                <option value="BI">BI</option>
+                            </select>
+                            <div [hidden]="!area.errors?.required" class="invalid-feedback">
+                                Area requerida
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success  mt-3"><i class="fa fa-check-circle"></i> Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- FIN PREGUNTA - INICIO HISTORICO  -->
+    <div id="Historico" *ngIf="area == 'historico'">
+        <form (ngSubmit)="GHistorico(historicoForm)" #historicoForm="ngForm">
+            <main>
+                <div class="container d-flex justify-content-between mt-3">
+                    <div class="row ">
+                        <div class="col-4">
+                            <a class="btn btn-primary btn-lg" (click)="atras()">
+                                <i class="fa fa-arrow-circle-left"></i>  Ir Atras
+                            </a>
+                        </div>
+                        <div class="col-4">
+                            <a class="btn btn-danger btn-lg" (click)="eliminar()">
+                                <i class="fa fa-trash-o"></i> Eliminar
+                            </a>
+                        </div>           
+                        <div class="col-4">
+                            <button class="btn btn-success btn-lg" type="submit">
+                                <i class="fa fa-check-circle"></i> Guardar
+                            </button>
+                        </div>           
+                    </div>
+                </div>
+            </main>
+            <div class="card border-dark p-3">
+                <div class="card-header">
+                    <h4><i class="fa fa-history" aria-hidden="true"></i> Historico</h4>
+                    <small>id: {{id}}</small>
+                </div>
+                <div class="card-body">
+                        <!-- *************************** -->
+                        <div class="form-group">
+                            <label for="titulo">Titulo</label>
+                            <input type="text" name="titulo" class="form-control" required #titulo="ngModel"
+                            [(ngModel)]="historico.titulo" minlength="10"
+                            [ngClass]="{'is-invalid': titulo.errors && titulo.touched}">
+                            <div [hidden]="!titulo.errors?.required" class="invalid-feedback">
+                            titulo requerida
+                            </div>
+                            <div [hidden]="!titulo.errors?.minlength" class="invalid-feedback">
+                            Debe contener almenos 10 caracteres
+                            </div>
+                        </div>
+                        <!-- *************************** -->
+                        <div class="form-group">
+                            <label for="area">Area</label>
+                            <select name="area" class="form-control" required #area="ngModel"
+                            [(ngModel)]="historico.area" [ngClass]="{'is-invalid': area.errors && area.touched}" >
+                            <option value="Desarrollo">Desarrollo</option>
+                            <option value="ERP">ERP</option>
+                            <option value="BI">BI</option>
+                            </select>
+                            <div [hidden]="!area.errors?.required" class="invalid-feedback">
+                            Area requerida
+                            </div>
+                        </div>
+                        <!-- *************************** -->
+                        <div class="form-group">
+                            <label for="descripcion">Descripcion</label>
+                            <textarea type="text" name="descripcion" class="form-control" required #descripcion="ngModel"
+                            [(ngModel)]="historico.descripcion" minlength="10"
+                            [ngClass]="{'is-invalid': descripcion.errors && descripcion.touched}"
+                            rows="7" cols="100" ></textarea>
+                            <div [hidden]="!descripcion.errors?.required" class="invalid-feedback">
+                            Descripcion requerida
+                            </div>
+                            <div [hidden]="!descripcion.errors?.minlength" class="invalid-feedback">
+                            Debe contener almenos 10 caracteres
+                            </div>
+                        </div>
+                        <!-- ***************************** -->
+                        <div class="form-group">
+                            <label for="docHistorico">Documento</label>
+                            <input type="file" class="form-control" id="idDoc" name="idDoc">
+                        </div>
+                    <button type="submit" class="btn btn-success  mt-3"><i class="fa fa-check-circle"></i> Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>

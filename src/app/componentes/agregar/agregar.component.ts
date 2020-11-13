@@ -34,7 +34,7 @@ export class AgregarComponent implements OnInit {
     email:''
   };
 
-  hisotrico: Historico = {
+  historico: Historico = {
     area:'',
     fecha:'',
     descripcion:'',
@@ -126,7 +126,7 @@ export class AgregarComponent implements OnInit {
     }
     else {
       // agregar un nuevo componente
-      this.flashMessages.show('Pregunta agregada', {
+      this.flashMessages.show('Historico agregado', {
         cssClass: 'alert-success', timeout: 2500
       });
       // value.idDoc = "qwe";

@@ -11,6 +11,7 @@ import { ProblemasSolucionesComponent } from './componentes/problemas-soluciones
 import { RegistroComponent } from './componentes/registro/registro.component';
 
 import { AuthGuard } from "../../src/app/guard/auth.guard";
+import { EditarComponent } from './componentes/editar/editar.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent , canActivate: [AuthGuard]},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent , },
   {path: 'registro', component: RegistroComponent , },
   {path: 'agregar', component: AgregarComponent , canActivate: [AuthGuard]},
+  {path: 'editar/:area/:id', component: EditarComponent , canActivate: [AuthGuard]},
 
   {path: '**', component: ErrorComponent , },
 ];

@@ -11,6 +11,7 @@ import { HistoricosService } from "../../services/historicos.service";
 export class HistoricosComponent implements OnInit {
 
   //filtros
+  area: String = 'historico';
   fillFecha: string;
   fillArea: string;
   fillTitulo: String;
@@ -28,7 +29,6 @@ export class HistoricosComponent implements OnInit {
     titulo:'',
     idDoc: '',
     email:''
-
   };
 
   constructor(

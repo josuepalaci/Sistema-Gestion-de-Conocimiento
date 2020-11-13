@@ -20,6 +20,7 @@ import { AgregarComponent } from './componentes/agregar/agregar.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { EditarComponent } from './componentes/editar/editar.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     LoginComponent,
     AgregarComponent,
     RegistroComponent,
-    InicioComponent
+    InicioComponent,
+    EditarComponent
   ],
   imports: [
     BrowserModule,

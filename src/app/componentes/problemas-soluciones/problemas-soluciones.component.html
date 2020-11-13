@@ -94,6 +94,8 @@
                       <p class="mb-1">{{pregunta.area}}</p>
                       <!-- <small>Donec id elit non mi porta.</small> -->
                       <!-- <a class="btn btn-primary btn-sm" *ngIf="pregunt.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a> -->
+                <a routerLink="/editar/{{area}}/{{pregunta.id}}" class="btn btn-secondary" *ngIf="pregunta.email == loggedInUser || loggedInUser === 'admin@gdc.com'" ><i class="fa fa-angle-double-right" aria-hidden="true"></i> Editar</a>
+
                   </a>
                 </div>
               </div>
@@ -109,13 +111,15 @@
                       <p class="mb-1">{{pregunta.area}}</p>
                       <!-- <small>Donec id elit non mi porta.</small> -->
                       <!-- <a class="btn btn-primary btn-sm" *ngIf="pregunt.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a> -->
+                <a routerLink="/editar/{{area}}/{{pregunta.id}}" class="btn btn-secondary" *ngIf="pregunta.email == loggedInUser || loggedInUser === 'admin@gdc.com'" ><i class="fa fa-angle-double-right" aria-hidden="true"></i> Editar</a>
+                      
                   </a>
                 </div>
               </div>
         </div>
 
         <div class="col-md-8 mt-5 ">
-            <div class="card text-white bg-primary mb-3" *ngIf="pregunt.pregunta!=''">
+            <div class="card mb-3" *ngIf="pregunt.pregunta!=''">
                 <div class="card-header d-flex justify-content-between">
                   {{pregunt.area}} 
                   <div>

@@ -68,6 +68,8 @@
                     </div>
                     <p class="mb-1">{{conse.area}}</p>
                     <!-- <a class="btn btn-secondary btn-sm" *ngIf="conse.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a> -->
+                    <a routerLink="/editar/{{area}}/{{conse.id}}" class="btn btn-secondary" *ngIf="conse.email == loggedInUser || loggedInUser === 'admin@gdc.com'" >
+                      <i class="fa fa-angle-double-right" aria-hidden="true"></i> Editar</a>
                 </a>
                   
               </div>
@@ -77,7 +79,7 @@
           <div *ngIf="controlFil === false">
             <h4>Listado de Consejos:</h4>
               <div class="list-group" *ngFor="let conse of consejoFiltro">
-                  
+                
                 <a (click)="getConsejo(conse.id)" class="list-group-item list-group-item-action"  >
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1 mr-2">{{conse.titulo}}</h5>
@@ -85,15 +87,16 @@
                   </div>
                   <p class="mb-1">{{conse.area}}</p>
                   <!-- <a class="btn btn-primary btn-sm" *ngIf="conse.email === loggedInUser || loggedInUser === 'admin@gdc.com'">Modificar</a> -->
-              </a>
-                  
+                  <a routerLink="/editar/{{conse.id}}" class="btn btn-secondary" *ngIf="conse.email == loggedInUser || loggedInUser === 'admin@gdc.com'" >
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i> Editar</a>
+                </a>  
               </div>
           </div>
           
         </div>
 
         <div class="col-md-7  mt-5">
-            <div class="card text-white bg-primary mb-3" *ngIf="consejo.titulo != '' ">
+            <div class="card  mb-3" *ngIf="consejo.titulo != '' ">
                 <div class="card-header d-flex justify-content-between">
                   <p>{{consejo.area}}</p>
                   <div>

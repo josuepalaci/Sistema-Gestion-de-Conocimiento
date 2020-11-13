@@ -12,6 +12,7 @@ import { ConsejosService } from "../../services/consejos.service";
 export class ConsejosComponent implements OnInit {
 
   //filtros
+  area: String = 'consejo'
   fillFecha: string;
   fillArea: string;
   fillTitulo: String;
