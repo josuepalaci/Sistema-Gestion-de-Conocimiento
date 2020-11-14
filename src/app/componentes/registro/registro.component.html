@@ -1,1 +1,38 @@
-<p>registro works!</p>
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h4><i class="fa fa-user" aria-hidden="true"></i> Registro de Usuarios</h4>
+      </div>
+    </div>
+  </div>
+</header>
+
+<flash-messages></flash-messages>
+
+<section id="registro" class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          <h4>Registro</h4>
+        </div>
+        <div class="card-body">
+          <form (submit)="registro()">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" name="email" class="form-control" placeholder="ingrese el email" [(ngModel)]="email"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="password">password</label>
+              <input type="password" name="password" class="form-control" placeholder="passsword" [(ngModel)]="password"
+                required>
+            </div>
+            <input type="submit" value="Registrarse" class="btn btn-primary btn-block">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -26,7 +26,7 @@
           <i class="fa fa-user"> </i> Bienvenido: {{loggedInUser}}
         </a>
         <div class="dropdown-menu" >
-          <!-- <a *ngIf="isAdmin===loggedInUser" routerLink="/registro" class="dropdown-item"><i class="fa fa-cog"></i> Registrar Usuario</a> -->
+          <a *ngIf="isAdmin===loggedInUser" routerLink="/registro" class="dropdown-item"><i class="fa fa-cog"></i> Registrar Usuario</a>
           <!-- <a (click)="cambioColor()" class="dropdown-item"><i class="fa fa-spinner"></i> Cambiar Diseño</a> -->
           <button type="button" (click)="cambioColor()" class="dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off"><i class="fa fa-spinner"></i>
             Invertir Color
