@@ -15,7 +15,7 @@ import { PreguntasService } from "../../services/preguntas.service";
 export class ProblemasSolucionesComponent implements OnInit {
 
   //filtros
-  area: String = 'historico';
+  area: String = 'problema';
   fillFecha: string;
   fillArea: string;
   fillTitulo: String;
