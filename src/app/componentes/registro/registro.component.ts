@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ConstantPool } from '@angular/compiler';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { Direccion } from 'src/app/models/direccion.model';
+import { DireccionService } from 'src/app/services/direccion.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -11,27 +15,51 @@ import { LoginService } from 'src/app/services/login.service';
 export class RegistroComponent implements OnInit {
 
   // CREDENCIALES 
-  email: string;
-  password: string;
+  emailU: string;
+  passwordU: string;
+
+  @ViewChild("consejoForm") consejoForm: NgForm;
+
+  direccion: Direccion = {
+    id:'',
+    puesto:'',
+    nombre:'',
+    funcion:'',
+    jefe:'',
+    email:''
+  }
+
 
   constructor(
     private flashMessages: FlashMessagesService,
     private router: Router,
-    private logignService: LoginService
+    private logignService: LoginService,
+    private direccionServices: DireccionService
   ) { }
 
   ngOnInit(): void {
   }
 
-  registro(){
-    this.logignService.registrarse(this.email, this.password)
-    .then( res => {
-      this.router.navigate(['/']);
-    }).catch( error => {
-      this.flashMessages.show(error.message, {
+  registro({value, valid}: {value:Direccion, valid: boolean}){
+    if (!valid) {
+      this.flashMessages.show('Por favor llenalo correctamente', {
         cssClass: 'alert-danger', timeout: 2500
+      });
+    } else {
+
+      this.logignService.registrarse(this.emailU, this.passwordU)
+      .then( res => {
+        this.direccion.email = this.emailU;
+        this.direccionServices.addPersona(this.direccion);
+        this.router.navigate(['/']);
+      }).catch( error => {
+        this.flashMessages.show(error.message, {
+          cssClass: 'alert-danger', timeout: 2500
+        })
       })
-    })
-}
+      
+    }
+  }
+
 
 }

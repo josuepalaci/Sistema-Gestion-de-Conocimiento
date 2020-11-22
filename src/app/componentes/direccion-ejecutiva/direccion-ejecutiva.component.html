@@ -17,11 +17,14 @@
 
 <div class="container mt-5">
     <div class="row">
-   
+
         <div class="col-md-4 ">
           <h4>Empleados:</h4>
             <div class="list-group" *ngFor="let persona of personal">
-              <button (click)="getPersona(persona.id)" class="list-group-item list-group-item-action">{{persona.puesto}}</button>
+              <a (click)="getPersona(persona.id)" class="list-group-item list-group-item-action"> {{persona.puesto}} 
+                <a routerLink="/editar/{{area}}/{{persona.id}}" class=" ml-3 btn btn-secondary btn-sm" *ngIf="loggedInUser === 'admin@gdc.com'" >
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i> Editar</a>
+              </a>
             </div>
         </div>
         
@@ -38,6 +41,9 @@
                   <h4 class="card-title">Nombre: {{personaA.nombre}}</h4>
                   <h6 class="card-subtitle text-muted"> Jefe: {{personaA.jefe}}</h6>
                   <p class="card-text mt-3">Funcion: {{personaA.funcion}}</p>
+                </div>
+                <div class="card-footer">
+                  <p class="card-text mt-3">Email: {{personaA.email}}</p>
                 </div>
             </div>
             <div class="" *ngIf="personaA.nombre === '' ">

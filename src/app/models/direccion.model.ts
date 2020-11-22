@@ -5,4 +5,5 @@ export interface Direccion{
     nombre?:string;
     puesto?:string;
     id?:string;
+    email?:string;
 }

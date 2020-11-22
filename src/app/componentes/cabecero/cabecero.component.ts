@@ -40,8 +40,8 @@ export class CabeceroComponent implements OnInit {
   }
 
   logOut(){
-    this.loginService.logOut();
     this.isloggedIn = false;
+    this.loginService.logOut();
     this.router.navigate(['/login']);
   }
 

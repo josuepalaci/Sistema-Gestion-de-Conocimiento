@@ -4,9 +4,11 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Consejo } from 'src/app/models/consejo.model';
+import { Direccion } from 'src/app/models/direccion.model';
 import { Historico } from 'src/app/models/historico.model';
 import { Pregunta } from 'src/app/models/pregunta.model';
 import { ConsejosService } from 'src/app/services/consejos.service';
+import { DireccionService } from 'src/app/services/direccion.service';
 import { HistoricosService } from 'src/app/services/historicos.service';
 import { PreguntasService } from 'src/app/services/preguntas.service';
 
@@ -26,6 +28,7 @@ export class EditarComponent implements OnInit {
   @ViewChild("consejoForm") consejoForm: NgForm;
   @ViewChild("preguntaform") preguntaform: NgForm;
   @ViewChild("historicoForm") historicoForm: NgForm;
+  @ViewChild("direccionForm") direccionForm: NgForm;
 
   //CONTENEDORES 
   consejo: Consejo = {
@@ -54,14 +57,23 @@ export class EditarComponent implements OnInit {
     idDoc: '',
     email:''
   };
-
+  direccion: Direccion = {
+    id:'',
+    puesto:'',
+    nombre:'',
+    funcion:'',
+    jefe:'',
+    email:''
+  }
+  
   constructor( 
     private router: Router, 
     private route: ActivatedRoute, 
     private flashMessages: FlashMessagesService,
     private consejoServicio: ConsejosService,
     private historicoServicio: HistoricosService,
-    private preguntaServicio: PreguntasService
+    private preguntaServicio: PreguntasService,
+    private direccionService: DireccionService
     ) { }
 
   ngOnInit(): void {
@@ -78,11 +90,18 @@ export class EditarComponent implements OnInit {
     if (this.area == 'problema') {
       this.preguntaServicio.getPregunta(this.id).subscribe(pregu => this.pregunta = pregu);
     }
+    if (this.area == 'personal') {
+      this.direccionService.getPersona(this.id).subscribe(perso => this.direccion = perso);
+    }
 
   }
 
   atras(){
-    this.router.navigate([`/${this.area}s`]);
+    if( this.area === 'personal'){
+      this.router.navigate([`/direccion`]);
+    } else {
+      this.router.navigate([`/${this.area}s`]);
+    }
   }
 
   eliminar(){
@@ -95,6 +114,9 @@ export class EditarComponent implements OnInit {
     } else if (this.area == 'historico') {
       this.historicoServicio.deleteHistorico(this.historico);
       this.router.navigate([`/${this.area}s`]);
+    } else if (this.area == 'personal') {
+      this.direccionService.deleteDireccion(this.direccion);
+      this.router.navigate([`/direccion`]);
     }
   }
 
@@ -146,6 +168,21 @@ export class EditarComponent implements OnInit {
       value.email = this.historico.email;
       this.historicoServicio.updateHistorico(value);
       this.router.navigate([`/${this.area}s`]);
+    }
+  }
+
+  GDireccion({value, valid}: {value: Historico, valid: boolean}){
+    if (!valid) {
+      this.flashMessages.show('porfavor llena el formulario correctamente',
+        {cssClass: 'alert-danger', timeout: 2500}
+      );
+    } else {
+
+      value.id = this.id;
+      // console.log(value);
+      this.direccionService.updateDireccion(value);
+      this.router.navigate([`/direccion`]);
+      
     }
   }
 

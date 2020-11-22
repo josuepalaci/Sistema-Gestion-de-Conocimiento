@@ -16,8 +16,10 @@ export class DireccionService {
   direccion: Observable<Direccion>;
 
   constructor(private db: AngularFirestore) {
-    this.direccionColeccion = db.collection('direccion', ref => ref.orderBy('id','asc'));
+    this.direccionColeccion = db.collection('direccion', ref => ref.orderBy('puesto','desc'));
   }
+
+  //--------------- PROCESOS CRUD ----------------------------------
 
   getPersonal(): Observable<Direccion[]>{
     this.direccionTodo = this.direccionColeccion.snapshotChanges().pipe(map( cambios => {
@@ -44,6 +46,20 @@ export class DireccionService {
       })
     );
     return this.direccion;
+  }
+
+  addPersona(persona: Direccion){
+    this.direccionColeccion.add(persona);
+  }
+
+  updateDireccion(persona: Direccion){
+    this.direccionDoc = this.db.doc(`direccion/${persona.id}`);
+    this.direccionDoc.update(persona);
+  }
+
+  deleteDireccion(perso: Direccion){
+    this.direccionDoc = this.db.doc(`direccion/${perso.id}`);
+    this.direccionDoc.delete();
   }
 
 }

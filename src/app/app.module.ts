@@ -21,6 +21,7 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { EditarComponent } from './componentes/editar/editar.component';
+import { ConfigComponent } from './componentes/config/config.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EditarComponent } from './componentes/editar/editar.component';
     AgregarComponent,
     RegistroComponent,
     InicioComponent,
-    EditarComponent
+    EditarComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,

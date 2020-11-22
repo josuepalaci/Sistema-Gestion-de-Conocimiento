@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 import { Direccion } from "../../models/direccion.model";
 
 import { DireccionService } from "../../services/direccion.service";
@@ -10,16 +11,21 @@ import { DireccionService } from "../../services/direccion.service";
 })
 export class DireccionEjecutivaComponent implements OnInit {
 
+  area: String = 'personal'
+
   personal: Direccion[];
   personaA: Direccion = {
     funcion:'',
     jefe:'',
     nombre:'',
     puesto:'',
-    id: ''
+    id: '',
+    email:''
   };
+  loggedInUser: string;
 
   constructor(
+    private loginService: LoginService,
     private direccionService: DireccionService
   ) { }
 
@@ -30,6 +36,8 @@ export class DireccionEjecutivaComponent implements OnInit {
         // console.log(this.personal);
       }
     );
+    this.loginService.getAuth().subscribe(
+      auth => {this.loggedInUser = auth.email;});
   }
 
   getPersona(id: string){

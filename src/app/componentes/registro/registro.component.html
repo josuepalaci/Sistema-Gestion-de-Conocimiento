@@ -18,15 +18,69 @@
           <h4>Nuevo Usuario</h4>
         </div>
         <div class="card-body">
-          <form (submit)="registro()">
+          <form (submit)="registro(direccionForm)" #direccionForm="ngForm">
+            <div class="form-group">
+              <label for="puesto">Puesto</label>
+              <input type="text" name="puesto" class="form-control" placeholder="Ingrese el puesto" #puesto="ngModel"
+                [(ngModel)]="direccion.puesto"
+                required minlength="6"
+                [ngClass]="{'is-invalid': puesto.errors && puesto.touched}">
+                <div [hidden]="!puesto.errors?.required" class="invalid-feedback">
+                  Puesto requerido
+                </div>
+                <div [hidden]="!puesto.errors?.minlength" class="invalid-feedback">
+                  Debe contener almenos 6 caracteres
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" name="nombre" class="form-control" placeholder="Ingrese el nombre" #nombre="ngModel"
+                [(ngModel)]="direccion.nombre"
+                required minlength="4"
+                [ngClass]="{'is-invalid': nombre.errors && nombre.touched}">
+                <div [hidden]="!nombre.errors?.required" class="invalid-feedback">
+                  Nombre requerido
+                </div>
+                <div [hidden]="!nombre.errors?.minlength" class="invalid-feedback">
+                  Debe contener almenos 4 caracteres
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="funcion">Funcion</label>
+              <textarea type="text" name="funcion" class="form-control" required #funcion="ngModel"
+                  [(ngModel)]="direccion.funcion" minlength="10" placeholder="Ingrese la funcion"
+                  [ngClass]="{'is-invalid': funcion.errors && funcion.touched}"
+                  rows="7" cols="100" ></textarea>
+                  <div [hidden]="!funcion.errors?.required" class="invalid-feedback">
+                    Funcion requerida
+                  </div>
+                  <div [hidden]="!funcion.errors?.minlength" class="invalid-feedback">
+                    Debe contener almenos 10 caracteres
+                  </div>
+            </div>
+            <div class="form-group">
+              <label for="jefe">Jefe</label>
+              <input type="text" name="jefe" class="form-control" placeholder="Ingrese el jefe inmediato" #jefe="ngModel"
+                [(ngModel)]="direccion.jefe"
+                required minlength="6"
+                [ngClass]="{'is-invalid': jefe.errors && jefe.touched}">
+                <div [hidden]="!jefe.errors?.required" class="invalid-feedback">
+                  Jefe requerido
+                </div>
+                <div [hidden]="!jefe.errors?.minlength" class="invalid-feedback">
+                  Debe contener almenos 6 caracteres
+                </div>
+            </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" name="email" class="form-control" placeholder="Ingrese el email" [(ngModel)]="email"
+              <input type="email" name="email" class="form-control" placeholder="Ingrese el email" 
+                [(ngModel)]="emailU" #email="ngModel"
                 required>
             </div>
             <div class="form-group">
-              <label for="password">password</label>
-              <input type="password" name="password" class="form-control" placeholder="Ingrese la contraseña" [(ngModel)]="password"
+              <label for="password">Contraseña</label>
+              <input type="password" name="password" class="form-control" placeholder="Ingrese la contraseña" 
+              [(ngModel)]="passwordU" #password="ngModel"
                 required>
             </div>
             <input type="submit" value="Registrarse" class="btn btn-primary btn-block">

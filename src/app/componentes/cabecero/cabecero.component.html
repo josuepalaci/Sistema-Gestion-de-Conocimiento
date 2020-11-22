@@ -10,7 +10,7 @@
 
     <ul *ngIf="isloggedIn" class="navbar-nav">
       <li class="nav-item dropdown px-2">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Inicio</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Areas</a>
         <div class="dropdown-menu" >
           <a routerLink="/direccion" class="dropdown-item"><i class="fa fa-sitemap"></i> Direccion Ejecutiva</a>
           <a routerLink="/problemas" class="dropdown-item"><i class="fa fa-bug"></i> Problemas y Soluciones</a>
@@ -23,17 +23,18 @@
     <ul class="navbar-nav">
       <li *ngIf="isloggedIn" class="nav-item dropdown mr-3">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown">
-          <i class="fa fa-user"> </i> Bienvenido: {{loggedInUser}}
+          Bienvenido: {{loggedInUser}}
         </a>
         <div class="dropdown-menu" >
-          <a *ngIf="isAdmin===loggedInUser" routerLink="/registro" class="dropdown-item"><i class="fa fa-cog"></i> Registrar Usuario</a>
+          <a *ngIf="isAdmin===loggedInUser" routerLink="/registro" class="dropdown-item"><i class="fa fa-user-plus"></i> Registrar Usuario</a>
           <!-- <a (click)="cambioColor()" class="dropdown-item"><i class="fa fa-spinner"></i> Cambiar Diseño</a> -->
           <button type="button" (click)="cambioColor()" class="dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off"><i class="fa fa-spinner"></i>
             Invertir Color
           </button>
+          <a routerLink="/config" class="dropdown-item"><i class="fa fa-cog"></i> Cambiar Contraseña</a>
           <div class="dropdown-divider"></div>
           
-            <a *ngIf="isloggedIn" routerLink="/login" (click)="logOut()" class="dropdown-item" style="cursor: pointer;">
+            <a *ngIf="isloggedIn" (click)="logOut()" class="dropdown-item" style="cursor: pointer;">
               <i class="fa fa-user-times"> Salir</i>
             </a>
           

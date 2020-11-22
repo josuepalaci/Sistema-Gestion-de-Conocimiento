@@ -11,7 +11,9 @@ import { ProblemasSolucionesComponent } from './componentes/problemas-soluciones
 import { RegistroComponent } from './componentes/registro/registro.component';
 
 import { AuthGuard } from "../../src/app/guard/auth.guard";
+import { NewPeopleGuard } from "../../src/app/guard/new-people.guard";
 import { EditarComponent } from './componentes/editar/editar.component';
+import { ConfigComponent } from './componentes/config/config.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent , canActivate: [AuthGuard]},
@@ -20,8 +22,9 @@ const routes: Routes = [
   {path: 'consejos', component: ConsejosComponent , canActivate: [AuthGuard]},
   {path: 'problemas', component: ProblemasSolucionesComponent , canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent , },
-  {path: 'registro', component: RegistroComponent , },
+  {path: 'registro', component: RegistroComponent , canActivate: [AuthGuard, NewPeopleGuard]},
   {path: 'agregar', component: AgregarComponent , canActivate: [AuthGuard]},
+  {path: 'config', component: ConfigComponent , canActivate: [AuthGuard]},
   {path: 'editar/:area/:id', component: EditarComponent , canActivate: [AuthGuard]},
 
   {path: '**', component: ErrorComponent , },

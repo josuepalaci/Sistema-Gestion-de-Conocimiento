@@ -39,4 +39,8 @@ export class LoginService {
     })
   }
 
+  cambioPass(){
+    return this.getAuth();
+  }
+
 }

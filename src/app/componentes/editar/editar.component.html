@@ -13,7 +13,7 @@
     <!-- INICIO FORM CONSEJO  -->
     <div id="consejos" *ngIf="area == 'consejo'">
         <form (ngSubmit)="GConsejo(consejoForm)" #consejoForm="ngForm">
-            <main>
+            <main class="p-3">
                 <div class="container d-flex justify-content-between mt-3">
                     <div class="row ">
                         <div class="col-4">
@@ -88,7 +88,7 @@
     <!-- FIN CONSEJO - INICIO PREGUNTA  -->
     <div id="Pregunta" *ngIf="area == 'problema'">
         <form (ngSubmit)="GPregunta(preguntaform)" #preguntaform="ngForm">
-            <main>
+            <main class="p-3">
                 <div class="container d-flex justify-content-between mt-3">
                     <div class="row ">
                         <div class="col-4">
@@ -149,7 +149,7 @@
     <!-- FIN PREGUNTA - INICIO HISTORICO  -->
     <div id="Historico" *ngIf="area == 'historico'">
         <form (ngSubmit)="GHistorico(historicoForm)" #historicoForm="ngForm">
-            <main>
+            <main class="p-3">
                 <div class="container d-flex justify-content-between mt-3">
                     <div class="row ">
                         <div class="col-4">
@@ -221,6 +221,101 @@
                             <label for="docHistorico">Documento</label>
                             <input type="file" class="form-control" id="idDoc" name="idDoc">
                         </div>
+                    <button type="submit" class="btn btn-success  mt-3"><i class="fa fa-check-circle"></i> Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- FIN HISTORICO - INICIO PERSONAL  -->
+    <div id="Direccion" *ngIf="area == 'personal'">
+        <form (ngSubmit)="GDireccion(direccionForm)" #direccionForm="ngForm">
+            <main class="p-3">
+                <div class="container d-flex justify-content-between mt-3">
+                    <div class="row ">
+                        <div class="col-4">
+                            <a class="btn btn-primary btn-lg" (click)="atras()">
+                                <i class="fa fa-arrow-circle-left"></i>  Ir Atras
+                            </a>
+                        </div>
+                        <div class="col-4">
+                            <a class="btn btn-danger btn-lg" (click)="eliminar()">
+                                <i class="fa fa-trash-o"></i> Eliminar
+                            </a>
+                        </div>           
+                        <div class="col-4">
+                            <button class="btn btn-success btn-lg" type="submit">
+                                <i class="fa fa-check-circle"></i> Guardar
+                            </button>
+                        </div>           
+                    </div>
+                </div>
+            </main>
+            <div class="card border-dark p-3">
+                <div class="card-header">
+                    <h4><i class="fa fa-user" aria-hidden="true"></i> Empleado</h4>
+                    <small>id: {{id}}</small>
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label for="puesto">Puesto</label>
+                        <input type="text" name="puesto" class="form-control" placeholder="Ingrese el puesto" #puesto="ngModel"
+                          [(ngModel)]="direccion.puesto"
+                          required minlength="6"
+                          [ngClass]="{'is-invalid': puesto.errors && puesto.touched}">
+                          <div [hidden]="!puesto.errors?.required" class="invalid-feedback">
+                            Puesto requerido
+                          </div>
+                          <div [hidden]="!puesto.errors?.minlength" class="invalid-feedback">
+                            Debe contener almenos 6 caracteres
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" class="form-control" placeholder="Ingrese el nombre" #nombre="ngModel"
+                          [(ngModel)]="direccion.nombre"
+                          required minlength="4"
+                          [ngClass]="{'is-invalid': nombre.errors && nombre.touched}">
+                          <div [hidden]="!nombre.errors?.required" class="invalid-feedback">
+                            Nombre requerido
+                          </div>
+                          <div [hidden]="!nombre.errors?.minlength" class="invalid-feedback">
+                            Debe contener almenos 4 caracteres
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="funcion">Funcion</label>
+                        <textarea type="text" name="funcion" class="form-control" required #funcion="ngModel"
+                            [(ngModel)]="direccion.funcion" minlength="10" placeholder="Ingrese la funcion"
+                            [ngClass]="{'is-invalid': funcion.errors && funcion.touched}"
+                            rows="7" cols="100" ></textarea>
+                            <div [hidden]="!funcion.errors?.required" class="invalid-feedback">
+                              Funcion requerida
+                            </div>
+                            <div [hidden]="!funcion.errors?.minlength" class="invalid-feedback">
+                              Debe contener almenos 10 caracteres
+                            </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="jefe">Jefe</label>
+                        <input type="text" name="jefe" class="form-control" placeholder="Ingrese el jefe inmediato" #jefe="ngModel"
+                          [(ngModel)]="direccion.jefe"
+                          required minlength="6"
+                          [ngClass]="{'is-invalid': jefe.errors && jefe.touched}">
+                          <div [hidden]="!jefe.errors?.required" class="invalid-feedback">
+                            Jefe requerido
+                          </div>
+                          <div [hidden]="!jefe.errors?.minlength" class="invalid-feedback">
+                            Debe contener almenos 6 caracteres
+                          </div>
+                      </div>   
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Ingrese el email" 
+                          [(ngModel)]="direccion.email" #email="ngModel"
+                          required>
+                      </div> 
+
                     <button type="submit" class="btn btn-success  mt-3"><i class="fa fa-check-circle"></i> Guardar</button>
                 </div>
             </div>
