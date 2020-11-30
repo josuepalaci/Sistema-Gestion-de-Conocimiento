@@ -22,6 +22,7 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { EditarComponent } from './componentes/editar/editar.component';
 import { ConfigComponent } from './componentes/config/config.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ConfigComponent } from './componentes/config/config.component';
     AngularFireModule.initializeApp(environment.firestore, 'SDGDC'),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     { provide: SETTINGS, useValue:{}}
